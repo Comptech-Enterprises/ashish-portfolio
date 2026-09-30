@@ -1,9 +1,10 @@
 export const SITE = {
   name: "Ashish Lalwani",
-  company: "Right Homes Real Estate",
+  company: "Vibgyor Real Estate",
   tagline: "Always the right investment.",
   instagram: "https://www.instagram.com/ashishlalwanidubai/",
   website: "https://ashishlalwani.com/",
+  linkedin: "https://www.linkedin.com/in/ashishlalwani",
 };
 
 export const NAV = [
