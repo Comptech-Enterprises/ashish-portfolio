@@ -12,7 +12,7 @@ export default function About() {
           <div className="portrait" data-tilt>
             <div className="portrait__fallback"><span>AL</span></div>
             {hasPhoto && <Image src="/assets/ashish.jpg" alt="Ashish Lalwani" fill sizes="(max-width:860px) 100vw, 45vw" style={{ objectFit: "cover", zIndex: 2 }} />}
-            <div className="portrait__badge"><b>43K</b>Instagram family</div>
+            <div className="portrait__badge"><b>23</b>years in Dubai real estate</div>
           </div>
           <div className="rotor" aria-hidden="true">
             <svg viewBox="0 0 200 200">
@@ -26,13 +26,13 @@ export default function About() {
           <Reveal><p className="eyebrow">About</p></Reveal>
           <Reveal delay={100}><h2 className="h2">Real estate,<br />done <em>right.</em></h2></Reveal>
           <Reveal delay={200}>
-            <p className="lead">Ashish Lalwani is a Dubai property advisor with the team at Right Homes Real Estate — a trusted name for residential, commercial and investment real estate.</p>
+            <p className="lead">Ashish Lalwani is a Dubai property advisor with Vibgyor Real Estate, guiding clients with 23 years of results in the market.</p>
           </Reveal>
           <Reveal delay={300}>
-            <p>From first-time buyers to portfolio investors, every client gets the same thing: honest numbers, sharp local knowledge and a partner who stays until the keys are in hand. Award-winning design, real community involvement and a long track record in the Dubai market sit behind the name.</p>
+            <p>For 23 years he has helped families, NRIs, HNIs and first-time developers make decisions that feel right, not just profitable — bringing clarity instead of 200 listings, and explaining demand, cycles and risk instead of chasing the deal of the day. His filter is simple: Right Property, Right Reason, Right Time. If it doesn&apos;t pass all three, it doesn&apos;t go to a client.</p>
           </Reveal>
           <Reveal delay={400}>
-            <ul className="ticks"><li>Design excellence</li><li>Community first</li><li>Market experience</li></ul>
+            <ul className="ticks"><li>23 years of market experience</li><li>Trusted by NRIs &amp; HNIs worldwide</li><li>Clarity over confusion</li></ul>
           </Reveal>
         </div>
       </div>
