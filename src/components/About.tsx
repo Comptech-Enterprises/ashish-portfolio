@@ -4,14 +4,14 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 
 export default function About() {
-  const hasPhoto = fs.existsSync(path.join(process.cwd(), "public/assets/ashish.jpg"));
+  const hasPhoto = fs.existsSync(path.join(process.cwd(), "public/assets/ashish.webp"));
   return (
     <section className="about section" id="about">
       <div className="wrap about__grid">
         <Reveal variant="mask" className="about__portrait">
           <div className="portrait" data-tilt>
             <div className="portrait__fallback"><span>AL</span></div>
-            {hasPhoto && <Image src="/assets/ashish.jpg" alt="Ashish Lalwani" fill sizes="(max-width:860px) 100vw, 45vw" style={{ objectFit: "cover", zIndex: 2 }} />}
+            {hasPhoto && <Image src="/assets/ashish.webp" alt="Ashish Lalwani" fill sizes="(max-width:860px) 100vw, 45vw" style={{ objectFit: "cover", zIndex: 2 }} />}
             <div className="portrait__badge"><b>23</b>years in Dubai real estate</div>
           </div>
           <div className="rotor" aria-hidden="true">
@@ -23,16 +23,46 @@ export default function About() {
           </div>
         </Reveal>
         <div className="about__text">
-          <Reveal><p className="eyebrow">About</p></Reveal>
-          <Reveal delay={100}><h2 className="h2">Real estate,<br />done <em>right.</em></h2></Reveal>
+          <Reveal><p className="eyebrow">About Ashish</p></Reveal>
+          <Reveal delay={100}>
+            <h2 className="h2">Most people see options.<br />I see <em>responsibility.</em></h2>
+          </Reveal>
+          <Reveal delay={150}>
+            <p className="lead">For 23 years, I&apos;ve helped families, NRIs, HNIs and first-time developers make decisions that don&apos;t just feel profitable, but feel right. My name, Ashish, literally means blessing, and I carry that meaning into how I work every single day.</p>
+          </Reveal>
           <Reveal delay={200}>
-            <p className="lead">Ashish Lalwani is a Dubai property advisor with Vibgyor Real Estate, guiding clients with 23 years of results in the market.</p>
+            <ul className="creed">
+              <li><b>I don&apos;t overwhelm</b> my clients with 200 listings. I bring clarity.</li>
+              <li><b>I don&apos;t push</b> the &ldquo;deal of the day.&rdquo; I explain demand, cycles, numbers and risks.</li>
+              <li><b>I don&apos;t chase</b> transactions. I stand for trust, calm, and long-term guidance.</li>
+            </ul>
+          </Reveal>
+          <Reveal delay={250}>
+            <div className="formula">
+              <p className="eyebrow">My approach</p>
+              <div className="formula__steps"><span>Right Property</span><i>→</i><span>Right Reason</span><i>→</i><span>Right Time</span></div>
+              <p>If it doesn&apos;t pass all three, it doesn&apos;t go to my clients.</p>
+            </div>
           </Reveal>
           <Reveal delay={300}>
-            <p>For 23 years he has helped families, NRIs, HNIs and first-time developers make decisions that feel right, not just profitable — bringing clarity instead of 200 listings, and explaining demand, cycles and risk instead of chasing the deal of the day. His filter is simple: Right Property, Right Reason, Right Time. If it doesn&apos;t pass all three, it doesn&apos;t go to a client.</p>
+            <p>One moment early in my career shaped everything: I waited outside a site office for hours for a client who never came. That day I realised two truths — no one owes you their trust, and once someone gives it to you, you protect it with everything you have. That&apos;s the standard I hold myself to.</p>
+          </Reveal>
+          <Reveal delay={350}>
+            <p>Whether you&apos;re upgrading your home, building your first investment, or quietly expanding your portfolio from India, Africa, the UK, or anywhere in the world — my role is to remove the guesswork.</p>
           </Reveal>
           <Reveal delay={400}>
-            <ul className="ticks"><li>23 years of market experience</li><li>Trusted by NRIs &amp; HNIs worldwide</li><li>Clarity over confusion</li></ul>
+            <blockquote className="pull">
+              <span>Clarity over confusion.</span>
+              <span>Confidence over pressure.</span>
+              <span>A <em>blessing,</em> not a gamble.</span>
+            </blockquote>
+          </Reveal>
+          <Reveal delay={450}>
+            <p>Five years from now, my goal is simple: a business that grows because of the values I built into it, even when I&apos;m not in the room.</p>
+            <p className="about__close">If you want a calm, discreet advisor who treats your decision like his own, I&apos;m here to guide you.</p>
+          </Reveal>
+          <Reveal delay={500}>
+            <ul className="ticks"><li>23 years of market experience</li><li>Families, NRIs &amp; HNIs worldwide</li><li>Calm, discreet guidance</li></ul>
           </Reveal>
         </div>
       </div>
