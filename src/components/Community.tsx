@@ -96,8 +96,9 @@ export default function Community() {
                       src={post.image}
                       alt={post.title}
                       fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 240px"
+                      sizes="(max-width: 350px) 100vw, (max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
                       className="insta-card__img"
+                      style={{ objectFit: "cover" }}
                     />
                     <div className="insta-card__overlay" />
                     <span className="insta-card__tag">{post.tag}</span>
@@ -105,6 +106,7 @@ export default function Community() {
                   </div>
                   <div className="insta-card__body">
                     <h3 className="insta-card__title">{post.title}</h3>
+                    <p className="insta-card__desc">{post.desc}</p>
                     <div className="insta-card__footer">
                       <span>{post.views} views</span>
                       <span className="insta-card__action">Watch →</span>
