@@ -76,7 +76,7 @@ Sections render in this order (`src/app/page.tsx`):
 
 | Section | Component | Notes |
 | --- | --- | --- |
-| Preloader | `Preloader` | Gold-to-blue skyline path draws itself, name and progress bar fill, then the screen lifts away |
+| Preloader | `Preloader` | Blue skyline outline draws itself, name and progress bar fill, then the screen lifts away |
 | Navigation | `Navbar` | Sticky, blurs on scroll, hides when scrolling down, circular-reveal mobile menu |
 | Hero | `Hero` | Headline reveals line by line, soft sun glow, twinkling sparkles, three parallax skyline layers plus a tower |
 | Marquee | `Marquee` | Tilted looping ticker: Residential, Commercial, Investment, Off-plan, Resale, Rentals. Pauses on hover |
