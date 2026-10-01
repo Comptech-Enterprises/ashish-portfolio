@@ -184,7 +184,7 @@ export default function PropertySearch() {
       <div className="prop-search__results">
         {status === "loading" && (
           <p className="prop-search__status">
-            Fetching live listings from PropertyFinder — this can take up to 30 seconds.
+            Fetching live listings from PropertyFinder (this can take up to 30 seconds).
           </p>
         )}
 

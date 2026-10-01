@@ -45,10 +45,10 @@ export default function About() {
             </div>
           </Reveal>
           <Reveal delay={300}>
-            <p>One moment early in my career shaped everything: I waited outside a site office for hours for a client who never came. That day I realised two truths — no one owes you their trust, and once someone gives it to you, you protect it with everything you have. That&apos;s the standard I hold myself to.</p>
+            <p>One moment early in my career shaped everything: I waited outside a site office for hours for a client who never came. That day I realised two truths: no one owes you their trust, and once someone gives it to you, you protect it with everything you have. That&apos;s the standard I hold myself to.</p>
           </Reveal>
           <Reveal delay={350}>
-            <p>Whether you&apos;re upgrading your home, building your first investment, or quietly expanding your portfolio from India, Africa, the UK, or anywhere in the world — my role is to remove the guesswork.</p>
+            <p>Whether you&apos;re upgrading your home, building your first investment, or quietly expanding your portfolio from India, Africa, the UK, or anywhere in the world, my role is to remove the guesswork.</p>
           </Reveal>
           <Reveal delay={400}>
             <blockquote className="pull">
