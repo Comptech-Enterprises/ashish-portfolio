@@ -19,7 +19,7 @@ export default function Hero() {
       </div>
 
       <div className="hero__content">
-        <p className="eyebrow hero__eyebrow" data-split-in>Right Homes Real Estate · Dubai</p>
+        <p className="eyebrow hero__eyebrow" data-split-in>Vibgyor Real Estate · Dubai</p>
         <h1 className="hero__title">
           <span className="line"><span>Always the</span></span>
           <span className="line"><span><em>right</em> invest&shy;ment.</span></span>
