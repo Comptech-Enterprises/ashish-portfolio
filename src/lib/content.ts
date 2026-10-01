@@ -13,7 +13,6 @@ export const NAV = [
   { href: "#areas", label: "Areas" },
   { href: "#process", label: "Process" },
   { href: "#community", label: "Community" },
-  { href: "#search", label: "Search" },
 ];
 
 export const MARQUEE = ["Residential", "Commercial", "Investment", "Off-plan", "Resale", "Rentals"];
