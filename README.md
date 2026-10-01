@@ -224,7 +224,7 @@ The project is set up for [Vercel](https://vercel.com):
 2. Add `APIFY_TOKEN` in the environment variables.
 3. Deploy.
 
-`vercel.json` currently sets `git.deploymentEnabled.main` to `false`, so pushes to `main` do **not** auto-deploy. Remove that setting or deploy manually from the Vercel dashboard or CLI.
+Pushes to `main` deploy automatically once the repo is connected in Vercel. `vercel.json` holds no overrides.
 
 ## Known gaps and notes
 
