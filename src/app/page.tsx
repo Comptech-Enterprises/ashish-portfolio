@@ -8,6 +8,7 @@ import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
 import Areas from "@/components/Areas";
+import Properties from "@/components/Properties";
 import Process from "@/components/Process";
 import Community from "@/components/Community";
 import Contact from "@/components/Contact";
@@ -33,6 +34,7 @@ export default function Home() {
         <Stats />
         <Services />
         <Areas />
+        <Properties />
         <Process />
         <Community />
         <Contact />

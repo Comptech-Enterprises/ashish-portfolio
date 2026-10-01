@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useRef, useState, FormEvent, PointerEvent } from "react";
 import type { PropertyListing } from "@/app/api/properties/route";
 
 const EMIRATES = [
@@ -20,6 +20,79 @@ function formatPrice(price: number, currency: string) {
 }
 
 const MODE = "forSale";
+
+function useSlider() {
+  const track = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false });
+
+  const by = (dir: 1 | -1) => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>(".prop-card");
+    el.scrollBy({ left: dir * ((card?.offsetWidth ?? 320) + 22), behavior: "smooth" });
+  };
+
+  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse" || !track.current) return;
+    drag.current = { active: true, startX: e.clientX, startLeft: track.current.scrollLeft, moved: false };
+  };
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const d = drag.current;
+    if (!d.active || !track.current) return;
+    const dx = e.clientX - d.startX;
+    if (Math.abs(dx) > 5) d.moved = true;
+    track.current.scrollLeft = d.startLeft - dx;
+  };
+  const end = () => {
+    drag.current.active = false;
+  };
+  // swallow the click that follows a drag so cards don't open by accident
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      drag.current.moved = false;
+    }
+  };
+
+  return { track, by, handlers: { onPointerDown, onPointerMove, onPointerUp: end, onPointerLeave: end, onClickCapture } };
+}
+
+function PropertySlider({ items }: { items: PropertyListing[] }) {
+  const { track, by, handlers } = useSlider();
+  return (
+    <div className="prop-slider">
+        <div className="prop-slider__bar">
+          <span>{items.length} properties</span>
+          <div className="prop-slider__nav">
+            <button type="button" aria-label="Previous properties" onClick={() => by(-1)}>←</button>
+            <button type="button" aria-label="Next properties" onClick={() => by(1)}>→</button>
+          </div>
+        </div>
+        <div className="prop-slider__track" ref={track} data-cursor="Drag" {...handlers}>
+          {items.map((item) => (
+            <a
+              key={item.propertyId}
+              href={item.listingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="prop-card"
+              draggable={false}
+            >
+              <div className="prop-card__body">
+                <span className="prop-card__price">{formatPrice(item.price, item.currency)}</span>
+                <h3>{item.title}</h3>
+                <p className="prop-card__meta">
+                  {item.propertyType} · {item.bedrooms} bd · {item.bathrooms} ba · {item.areaSqft.toLocaleString()} sqft
+                </p>
+                <p className="prop-card__location">{item.community ? `${item.community}, ` : ""}{item.city}</p>
+                <span className="prop-card__cta">View listing →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+    </div>
+  );
+}
 
 export default function PropertySearch() {
   const [emirate, setEmirate] = useState("dubai");
@@ -121,28 +194,7 @@ export default function PropertySearch() {
           <p className="prop-search__status">No properties matched your search. Try widening your filters.</p>
         )}
 
-        {status === "done" && results.length > 0 && (
-          <div className="cards prop-cards">
-            {results.map((item) => (
-              <a
-                key={item.propertyId}
-                href={item.listingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="prop-card"
-              >
-                <div className="prop-card__body">
-                  <span className="prop-card__price">{formatPrice(item.price, item.currency)}</span>
-                  <h3>{item.title}</h3>
-                  <p className="prop-card__meta">
-                    {item.propertyType} · {item.bedrooms} bd · {item.bathrooms} ba · {item.areaSqft.toLocaleString()} sqft
-                  </p>
-                  <p className="prop-card__location">{item.community ? `${item.community}, ` : ""}{item.city}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        )}
+        {status === "done" && results.length > 0 && <PropertySlider items={results} />}
       </div>
     </div>
   );
