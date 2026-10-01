@@ -1,4 +1,4 @@
-# Ashish Lalwani — Dubai Real Estate Portfolio
+# Ashish Lalwani · Dubai Real Estate Portfolio
 
 Animated one-page portfolio site for **Ashish Lalwani**, Dubai real estate advisor at **Vibgyor Real Estate** ("Always the right investment."). It has a light, blue-accented look, a skyline-drawing preloader, a parallax Dubai skyline hero, scroll-driven sections, and a live UAE property search with a results slider.
 

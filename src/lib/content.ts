@@ -18,16 +18,40 @@ export const NAV = [
 export const MARQUEE = ["Residential", "Commercial", "Investment", "Off-plan", "Resale", "Rentals"];
 
 export const STATS = [
-  { value: 43, suffix: "K", label: "Followers on Instagram" },
-  { value: 323, suffix: "", label: "Posts & property stories" },
-  { value: 6, suffix: "", label: "Prime Dubai areas covered" },
-  { value: 3, suffix: "", label: "Sectors: home, commercial, invest" },
+  {
+    value: 23,
+    suffix: "+",
+    tag: "Market Advisory",
+    title: "Years Experience",
+    label: "Guiding HNIs, families and international investors in Dubai since 2001",
+  },
+  {
+    value: 100,
+    suffix: "%",
+    tag: "Ownership Rights",
+    title: "Freehold Title",
+    label: "Full outright ownership for foreign nationals across designated prime zones",
+  },
+  {
+    value: 0,
+    suffix: "%",
+    tag: "Fiscal Advantage",
+    title: "Tax-Free Capital",
+    label: "Zero personal income, property capital gains or recurring wealth taxes",
+  },
+  {
+    value: 8,
+    suffix: "%",
+    tag: "Annual ROI",
+    title: "Prime Rental Yields",
+    label: "Benchmark gross annual returns across Dubai's top-performing districts",
+  },
 ];
 
 export const SERVICES = [
   {
     title: "Residential",
-    text: "Apartments, villas and townhouses in Dubai’s most loved neighbourhoods. Buy, sell or rent — with a clear-eyed view of value.",
+    text: "Apartments, villas and townhouses in Dubai’s most loved neighbourhoods. Buy, sell or rent with a clear-eyed view of value.",
     icon: "M8 30L32 8l24 22M14 26v30h36V26M26 56V38h12v18",
   },
   {
@@ -37,7 +61,7 @@ export const SERVICES = [
   },
   {
     title: "Investment",
-    text: "Yield-driven off-plan and ready properties, matched to your goals. Always the right investment — never just any.",
+    text: "Yield-driven off-plan and ready properties, matched to your goals. Always the right investment, never just any.",
     icon: "M6 52L22 34l10 10 24-28M40 16h16v16",
   },
 ];
@@ -52,7 +76,7 @@ export const AREAS = [
 ];
 
 export const STEPS = [
-  { title: "Discover", text: "A short conversation about your goals, budget and timeline — buying, selling or investing." },
+  { title: "Discover", text: "A short conversation about your goals, budget and timeline: buying, selling or investing." },
   { title: "Shortlist", text: "Hand-picked properties with the real numbers: price trends, yields, service charges." },
   { title: "Negotiate", text: "Sharp local knowledge working for you, so the deal is the right one, not just a deal." },
   { title: "Close & handover", text: "Paperwork, registration and handover handled end to end. Then we stay in touch." },
