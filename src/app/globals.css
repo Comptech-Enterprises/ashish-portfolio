@@ -5,7 +5,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-html,body{max-width:100%;overflow-x:hidden}
+html,body{max-width:100%;overflow-x:clip}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.65}
 html:not([data-ready]) body{overflow:hidden}
 a{color:inherit;text-decoration:none}
@@ -217,13 +217,14 @@ html[data-ready] .hero .hero__sub{transition-delay:.5s}html[data-ready] .hero .h
 .insta-card{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#fff;border:1px solid rgba(11,31,68,.1);box-shadow:0 12px 30px rgba(11,31,68,.08);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s;color:var(--text);height:100%}
 .insta-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(11,31,68,.16);border-color:var(--blue)}
 .insta-card__image-box{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#0b1f44}
-.insta-card__img{transition:transform .6s var(--ease)}
+.insta-card__img{object-fit:cover;transition:transform .6s var(--ease)}
 .insta-card:hover .insta-card__img{transform:scale(1.08)}
 .insta-card__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,31,68,.05) 0%,rgba(11,31,68,.45) 100%);pointer-events:none}
 .insta-card__tag{position:absolute;top:10px;left:10px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#fff;background:rgba(11,31,68,.7);backdrop-filter:blur(6px);padding:4px 8px;border-radius:6px;z-index:2}
 .insta-card__play{position:absolute;bottom:10px;right:10px;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--deep);display:grid;place-items:center;font-size:.58rem;z-index:2;box-shadow:0 4px 10px rgba(0,0,0,.25)}
 .insta-card__body{padding:14px 14px 12px;display:flex;flex-direction:column;justify-content:space-between;flex-grow:1}
-.insta-card__title{font-size:.88rem;font-weight:700;line-height:1.3;margin-bottom:8px;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.insta-card__title{font-size:.88rem;font-weight:700;line-height:1.3;margin-bottom:4px;color:var(--text);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.insta-card__desc{font-size:.74rem;line-height:1.35;opacity:.75;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .insta-card__footer{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--blue);font-weight:700;border-top:1px solid rgba(11,31,68,.06);padding-top:8px}
 .insta-card__action{letter-spacing:.04em}
 @media(max-width:1024px){.community__grid{grid-template-columns:1fr;gap:40px}}
@@ -338,7 +339,8 @@ html[data-ready] .hero .hero__sub{transition-delay:.5s}html[data-ready] .hero .h
   .insta-card{border-radius:14px}
   .insta-card__image-box{aspect-ratio:1/1}
   .insta-card__body{padding:10px 8px 8px}
-  .insta-card__title{font-size:.78rem;margin-bottom:4px}
+  .insta-card__title{font-size:.78rem;margin-bottom:2px}
+  .insta-card__desc{font-size:.68rem;line-height:1.25;margin-bottom:6px}
   .insta-card__footer{font-size:.68rem;padding-top:6px}
   .community__profile-badge{width:100%;max-width:100%;padding:10px 14px}
   .footer__giant{font-size:clamp(2.6rem,16vw,4.5rem);letter-spacing:.05em}
