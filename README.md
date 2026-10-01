@@ -1,6 +1,6 @@
 # Ashish Lalwani — Dubai Real Estate Portfolio
 
-Animated portfolio site for **Ashish Lalwani**, Dubai real estate advisor at **Right Homes Real Estate** ("Always the right investment."). It has a light, blue-accented look, a skyline-drawing preloader, a parallax Dubai skyline hero, scroll-driven sections, and a live UAE property search.
+Animated one-page portfolio site for **Ashish Lalwani**, Dubai real estate advisor at **Right Homes Real Estate** ("Always the right investment."). It has a light, blue-accented look, a skyline-drawing preloader, a parallax Dubai skyline hero, scroll-driven sections, and a live UAE property search with a results slider.
 
 ## Table of contents
 
@@ -53,9 +53,9 @@ Create `.env.local` in the project root. It is git-ignored.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `APIFY_TOKEN` | Only for `/properties` | Token used by `/api/properties` to run the Apify actor |
+| `APIFY_TOKEN` | Only for the property search | Token used by `/api/properties` to run the Apify actor |
 
-If `APIFY_TOKEN` is missing, `GET /api/properties` returns `500 {"error":"Search is not configured."}`. The rest of the site works without it.
+The search section on the home page calls `/api/properties`. If `APIFY_TOKEN` is missing, `GET /api/properties` returns `500 {"error":"Search is not configured."}`. The rest of the site works without it.
 
 On Vercel, add `APIFY_TOKEN` under Project Settings, Environment Variables. Never expose it with a `NEXT_PUBLIC_` prefix.
 
@@ -70,7 +70,7 @@ On Vercel, add `APIFY_TOKEN` under Project Settings, Environment Variables. Neve
 
 ## Pages and sections
 
-### `/` Home
+### `/` Home (single page)
 
 Sections render in this order (`src/app/page.tsx`):
 
@@ -84,23 +84,20 @@ Sections render in this order (`src/app/page.tsx`):
 | Stats | `Stats` | Count-up numbers (43K followers, 323 posts, 6 areas, 3 sectors) |
 | Services | `Services` | Residential, Commercial, Investment cards with self-drawing icons and a cursor spotlight |
 | Areas | `Areas` | Pinned section where vertical scroll drives a horizontal strip of six Dubai areas |
+| Property search | `Properties`, `PropertySearch` | Filter form (emirate, bedrooms, price). Results appear in a drag, swipe or arrow-button slider with snap scrolling |
 | Process | `Process` | Four-step timeline with a line that fills as you scroll |
 | Community | `Community` | Instagram call-to-action and a phone mockup with floating tiles |
 | Contact | `Contact` | Large masked headline, links to Instagram and ashishlalwani.com |
 | Footer | `Footer` | Outlined giant "LALWANI" that fills on hover |
 
-### `/properties` Property search
-
-Reuses the preloader, scroll and pointer effects, navbar and footer, and adds the search form and results (`src/components/PropertySearch.tsx`).
-
 ## Property search
 
-Flow:
+Lives in the `#search` section of the home page (there is no separate search page). Flow:
 
 1. The form in `PropertySearch` collects emirate, minimum bedrooms, minimum price and maximum price.
 2. It calls `GET /api/properties?mode=forSale&emirate=dubai&...`.
 3. The route handler (`src/app/api/properties/route.ts`) validates the input, then calls the Apify actor `crawlerbros~property-finder-scraper` through `run-sync-get-dataset-items` with a 60 second timeout.
-4. The response `{ items: PropertyListing[] }` is rendered as cards.
+4. The response `{ items: PropertyListing[] }` is rendered as cards in a horizontal slider (`PropertySlider`): scroll-snap, mouse drag, touch swipe and previous/next buttons. A click right after a drag is ignored so cards don't open by accident.
 
 ### `GET /api/properties`
 
@@ -195,7 +192,6 @@ Stats and Instagram numbers (43K followers, 323 posts, 1,633 following) were tak
 ├── src/
 │   ├── app/
 │   │   ├── api/properties/   # GET handler that queries Apify
-│   │   ├── properties/       # Property search page
 │   │   ├── globals.css       # Theme, layout and animation styles
 │   │   ├── layout.tsx        # Fonts, metadata, root layout
 │   │   └── page.tsx          # Home page
@@ -203,7 +199,7 @@ Stats and Instagram numbers (43K followers, 323 posts, 1,633 following) were tak
 │   │   ├── Hero, Marquee, About, Stats, Services, Areas,
 │   │   │   Process, Community, Contact, Footer, Navbar   # Sections
 │   │   ├── Preloader, ScrollFx, PointerFx, Reveal, CountUp # Effects
-│   │   └── PropertySearch.tsx                             # Search UI
+│   │   └── Properties, PropertySearch                     # Search section, form and slider
 │   └── lib/content.ts        # All site copy and data
 ├── eslint.config.mjs
 ├── next.config.ts
