@@ -181,7 +181,7 @@ To retheme, change the variables, then check the hard-coded blues in the skyline
 | Bio text and chips | `src/components/About.tsx` |
 | Hero copy | `src/components/Hero.tsx` |
 | Instagram figures in the phone mockup | `src/components/Community.tsx` |
-| Portrait | Replace `public/assets/ashish.jpg` |
+| Portrait | Replace `public/assets/ashish.webp` |
 | Page title and social preview | `metadata` in `src/app/layout.tsx` |
 
 Stats and Instagram numbers (43K followers, 323 posts, 1,633 following) were taken from the public Instagram profile and will drift over time. Update them by hand.
@@ -190,7 +190,7 @@ Stats and Instagram numbers (43K followers, 323 posts, 1,633 following) were tak
 
 ```
 .
-├── public/assets/            # Static images (ashish.jpg)
+├── public/assets/            # Static images (ashish.webp)
 ├── legacy/                   # Earlier static HTML/CSS/JS version, kept for reference
 ├── src/
 │   ├── app/
