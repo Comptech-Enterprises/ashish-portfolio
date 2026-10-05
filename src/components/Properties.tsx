@@ -8,7 +8,7 @@ export default function Properties() {
         <Reveal><p className="eyebrow">Property search</p></Reveal>
         <Reveal delay={100}><h2 className="h2">Find your <em>next</em> address.</h2></Reveal>
         <Reveal delay={200}>
-          <p className="lead prop-lead">Live UAE listings for sale. Search by emirate, bedrooms and budget, refreshed on every search.</p>
+          <p className="lead prop-lead">Live UAE listings for sale. Search by emirate, community and bedrooms, refreshed on every search.</p>
         </Reveal>
         <Reveal delay={300}>
           <PropertySearch />

@@ -2,8 +2,6 @@ import Preloader from "@/components/Preloader";
 import ScrollFx from "@/components/ScrollFx";
 import PointerFx from "@/components/PointerFx";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
 import Services from "@/components/Services";
@@ -28,8 +26,6 @@ export default function Home() {
       <div className="grain" />
       <Navbar />
       <main id="top">
-        <Hero />
-        <Marquee />
         <About />
         <Stats />
         <Services />

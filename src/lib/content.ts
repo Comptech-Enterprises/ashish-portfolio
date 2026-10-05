@@ -15,7 +15,15 @@ export const NAV = [
   { href: "#community", label: "Community" },
 ];
 
-export const MARQUEE = ["Residential", "Commercial", "Investment", "Off-plan", "Resale", "Rentals"];
+export const COMMUNITIES = [
+  { value: "", label: "Any community" },
+  { value: "downtown-dubai", label: "Downtown Dubai" },
+  { value: "dubai-marina", label: "Dubai Marina" },
+  { value: "palm-jumeirah", label: "Palm Jumeirah" },
+  { value: "business-bay", label: "Business Bay" },
+  { value: "jumeirah-village-circle", label: "Jumeirah Village Circle" },
+  { value: "dubai-hills-estate", label: "Dubai Hills Estate" },
+];
 
 export const STATS = [
   {
@@ -67,12 +75,36 @@ export const SERVICES = [
 ];
 
 export const AREAS = [
-  { name: "Downtown Dubai", text: "Icon towers, fountains and the beating heart of the city.", a: "#1d4ed8", b: "#60a5fa", path: "M0 200V120H40V60H70V120H110V30L120 0 130 30V120H180V80H220V120H260V90H300V200Z" },
-  { name: "Dubai Marina", text: "Waterfront living, yachts and a skyline that never sleeps.", a: "#0369a1", b: "#38bdf8", path: "M0 200V150H30V90H60V150H90V60H120V150H150V100H180V150H210V70H240V150H270V110H300V200Z" },
-  { name: "Palm Jumeirah", text: "Beachfront villas and iconic residences on the world’s famous island.", a: "#4338ca", b: "#818cf8", path: "M0 200V170Q150 60 300 170V200Z" },
-  { name: "Business Bay", text: "Canal-side towers where work, luxury and investment meet.", a: "#1e40af", b: "#3b82f6", path: "M0 200V110H50V40H90V110H130V70H170V110H210V20H250V110H300V200Z" },
-  { name: "Jumeirah Village Circle", text: "Smart-value communities with strong rental returns.", a: "#0e7490", b: "#22d3ee", path: "M0 200V140H40V110H80V140H120V100H160V140H200V115H240V140H300V200Z" },
-  { name: "Dubai Hills Estate", text: "Green, golf-side family living with modern amenities.", a: "#3730a3", b: "#93c5fd", path: "M0 200V150Q75 100 150 150T300 150V200Z" },
+  {
+    name: "Downtown Dubai",
+    text: "Icon towers, fountains and the beating heart of the city.",
+    image: "/assets/instagram/post-1.jpg",
+  },
+  {
+    name: "Dubai Marina",
+    text: "Waterfront living, yachts and a skyline that never sleeps.",
+    image: "/assets/instagram/post-3.jpg",
+  },
+  {
+    name: "Palm Jumeirah",
+    text: "Beachfront villas and iconic residences on the world’s famous island.",
+    image: "/assets/instagram/post-2.jpg",
+  },
+  {
+    name: "Business Bay",
+    text: "Canal-side towers where work, luxury and investment meet.",
+    image: "/assets/instagram/post-5.jpg",
+  },
+  {
+    name: "Jumeirah Village Circle",
+    text: "Smart-value communities with strong rental returns.",
+    image: "/assets/instagram/post-6.jpg",
+  },
+  {
+    name: "Dubai Hills Estate",
+    text: "Green, golf-side family living with modern amenities.",
+    image: "/assets/instagram/post-4.jpg",
+  },
 ];
 
 export const STEPS = [
