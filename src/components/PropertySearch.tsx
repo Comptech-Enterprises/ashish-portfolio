@@ -2,15 +2,12 @@
 
 import { useRef, useState, FormEvent, PointerEvent } from "react";
 import type { PropertyListing } from "@/app/api/properties/route";
+import { COMMUNITIES } from "@/lib/content";
 
 const EMIRATES = [
   { value: "dubai", label: "Dubai" },
   { value: "abu-dhabi", label: "Abu Dhabi" },
   { value: "sharjah", label: "Sharjah" },
-  { value: "ajman", label: "Ajman" },
-  { value: "ras-al-khaimah", label: "Ras Al Khaimah" },
-  { value: "fujairah", label: "Fujairah" },
-  { value: "umm-al-quwain", label: "Umm Al Quwain" },
 ];
 
 const BEDROOM_OPTIONS = [0, 1, 2, 3, 4, 5];
@@ -96,9 +93,8 @@ function PropertySlider({ items }: { items: PropertyListing[] }) {
 
 export default function PropertySearch() {
   const [emirate, setEmirate] = useState("dubai");
+  const [community, setCommunity] = useState("");
   const [minBedrooms, setMinBedrooms] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
 
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [error, setError] = useState("");
@@ -111,8 +107,6 @@ export default function PropertySearch() {
 
     const params = new URLSearchParams({ mode: MODE, emirate });
     if (minBedrooms) params.set("minBedrooms", minBedrooms);
-    if (minPrice) params.set("minPrice", minPrice);
-    if (maxPrice) params.set("maxPrice", maxPrice);
 
     try {
       const res = await fetch(`/api/properties?${params.toString()}`);
@@ -142,6 +136,17 @@ export default function PropertySearch() {
           </label>
 
           <label>
+            <span>Community</span>
+            <select value={community} onChange={(e) => setCommunity(e.target.value)}>
+              {COMMUNITIES.map((c) => (
+                <option key={c.value} value={c.value}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label>
             <span>Min. bedrooms</span>
             <select value={minBedrooms} onChange={(e) => setMinBedrooms(e.target.value)}>
               <option value="">Any</option>
@@ -151,28 +156,6 @@ export default function PropertySearch() {
                 </option>
               ))}
             </select>
-          </label>
-
-          <label>
-            <span>Min. price (AED)</span>
-            <input
-              type="number"
-              min={0}
-              placeholder="No min"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-            />
-          </label>
-
-          <label>
-            <span>Max. price (AED)</span>
-            <input
-              type="number"
-              min={0}
-              placeholder="No max"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-            />
           </label>
         </div>
 
