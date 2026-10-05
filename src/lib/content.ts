@@ -18,16 +18,40 @@ export const NAV = [
 export const MARQUEE = ["Residential", "Commercial", "Investment", "Off-plan", "Resale", "Rentals"];
 
 export const STATS = [
-  { value: 43, suffix: "K", label: "Followers on Instagram" },
-  { value: 323, suffix: "", label: "Posts & property stories" },
-  { value: 6, suffix: "", label: "Prime Dubai areas covered" },
-  { value: 3, suffix: "", label: "Sectors: home, commercial, invest" },
+  {
+    value: 23,
+    suffix: "+",
+    tag: "Advisor Track Record",
+    title: "Years in Dubai",
+    label: "Local context for family homes, investments and portfolio moves.",
+  },
+  {
+    value: 6,
+    suffix: "",
+    tag: "Prime Communities",
+    title: "Area Shortlists",
+    label: "Downtown, Marina, Palm, Business Bay, JVC and Dubai Hills covered.",
+  },
+  {
+    value: 3,
+    suffix: "",
+    tag: "Property Tracks",
+    title: "Buy, Sell, Invest",
+    label: "Residential, commercial and investment decisions handled end to end.",
+  },
+  {
+    value: 4,
+    suffix: "",
+    tag: "Closing Flow",
+    title: "Steps to Handover",
+    label: "Discovery, shortlist, negotiation, paperwork and handover support.",
+  },
 ];
 
 export const SERVICES = [
   {
     title: "Residential",
-    text: "Apartments, villas and townhouses in Dubai’s most loved neighbourhoods. Buy, sell or rent — with a clear-eyed view of value.",
+    text: "Apartments, villas and townhouses in Dubai’s most loved neighbourhoods. Buy, sell or rent with a clear-eyed view of value.",
     icon: "M8 30L32 8l24 22M14 26v30h36V26M26 56V38h12v18",
   },
   {
@@ -37,7 +61,7 @@ export const SERVICES = [
   },
   {
     title: "Investment",
-    text: "Yield-driven off-plan and ready properties, matched to your goals. Always the right investment — never just any.",
+    text: "Yield-driven off-plan and ready properties, matched to your goals. Always the right investment, never just any.",
     icon: "M6 52L22 34l10 10 24-28M40 16h16v16",
   },
 ];
@@ -52,7 +76,7 @@ export const AREAS = [
 ];
 
 export const STEPS = [
-  { title: "Discover", text: "A short conversation about your goals, budget and timeline — buying, selling or investing." },
+  { title: "Discover", text: "A short conversation about your goals, budget and timeline: buying, selling or investing." },
   { title: "Shortlist", text: "Hand-picked properties with the real numbers: price trends, yields, service charges." },
   { title: "Negotiate", text: "Sharp local knowledge working for you, so the deal is the right one, not just a deal." },
   { title: "Close & handover", text: "Paperwork, registration and handover handled end to end. Then we stay in touch." },

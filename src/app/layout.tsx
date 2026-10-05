@@ -19,11 +19,11 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashishlalwani.com"),
-  title: "Ashish Lalwani — Dubai Real Estate",
+  title: "Ashish Lalwani · Dubai Real Estate",
   description:
     "Ashish Lalwani, Dubai real estate advisor at Vibgyor Real Estate. Residential, commercial and investment property. Always the right investment.",
   openGraph: {
-    title: "Ashish Lalwani — Dubai Real Estate",
+    title: "Ashish Lalwani · Dubai Real Estate",
     description: "Residential, commercial and investment property in Dubai. Always the right investment.",
     type: "website",
   },

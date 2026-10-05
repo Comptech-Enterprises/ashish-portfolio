@@ -22,10 +22,10 @@ export default function Hero() {
         <p className="eyebrow hero__eyebrow" data-split-in>Vibgyor Real Estate · Dubai</p>
         <h1 className="hero__title">
           <span className="line"><span>Always the</span></span>
-          <span className="line"><span><em>right</em> invest&shy;ment.</span></span>
+          <span className="line"><span><em>right</em> investment.</span></span>
         </h1>
         <p className="hero__sub" data-split-in>
-          Ashish Lalwani helps buyers, sellers and investors find their place in Dubai’s skyline — residential, commercial and everything worth owning.
+          Ashish Lalwani helps buyers, sellers and investors find their place in Dubai’s skyline: residential, commercial and everything worth owning.
         </p>
         <div className="hero__cta" data-split-in>
           <a href="#contact" className="btn" data-magnet><span>Book a consultation</span></a>
