@@ -15,7 +15,9 @@ export default function Services() {
                 <div className="card__icon"><svg viewBox="0 0 64 64"><path d={s.icon} /></svg></div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
-                <span className="card__more">Explore →</span>
+                <a href="#contact" className="card__more" aria-label={`Explore ${s.title} advisory services`}>
+                  Explore →
+                </a>
               </div>
             </Reveal>
           ))}

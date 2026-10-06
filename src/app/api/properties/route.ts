@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { SAMPLE_PROPERTIES } from "@/lib/sampleProperties";
 
 const ACTOR = "crawlerbros~property-finder-scraper";
 const MAX_ITEMS = 20;
@@ -36,19 +37,46 @@ export type PropertyListing = {
 };
 
 export async function GET(request: NextRequest) {
-  const token = process.env.APIFY_TOKEN;
-  if (!token) {
-    return NextResponse.json({ error: "Search is not configured." }, { status: 500 });
-  }
-
   const params = request.nextUrl.searchParams;
-  const mode = params.get("mode") === "forRent" ? "forRent" : "forSale";
   const emirateRaw = params.get("emirate") ?? "dubai";
   const emirate = EMIRATES.has(emirateRaw) ? emirateRaw : "dubai";
+  const community = (params.get("community") ?? "").toLowerCase().replace(/-/g, " ");
+  const minBedrooms = Number(params.get("minBedrooms"));
+
+  const token = process.env.APIFY_TOKEN;
+  if (!token) {
+    // Return curated portfolio properties filtered by query parameters
+    let items = SAMPLE_PROPERTIES.filter((p) => {
+      const pEmirate = p.city.toLowerCase().replace(/\s+/g, "-");
+      if (emirate && pEmirate !== emirate && !p.city.toLowerCase().includes(emirateRaw.replace(/-/g, " "))) {
+        return false;
+      }
+      if (community && !p.community.toLowerCase().includes(community)) {
+        return false;
+      }
+      if (Number.isInteger(minBedrooms) && minBedrooms >= 0 && p.bedrooms < minBedrooms) {
+        return false;
+      }
+      return true;
+    });
+
+    // If specific filters yielded zero matches in mock, return closest by emirate or all
+    if (items.length === 0) {
+      items = SAMPLE_PROPERTIES.filter((p) => {
+        if (Number.isInteger(minBedrooms) && minBedrooms >= 0) {
+          return p.bedrooms >= minBedrooms;
+        }
+        return true;
+      });
+    }
+
+    return NextResponse.json({ items });
+  }
+
+  const mode = params.get("mode") === "forRent" ? "forRent" : "forSale";
 
   const input: Record<string, unknown> = { mode, emirate, maxItems: MAX_ITEMS };
 
-  const minBedrooms = Number(params.get("minBedrooms"));
   if (Number.isInteger(minBedrooms) && minBedrooms >= 0) {
     input.minBedrooms = minBedrooms;
   }

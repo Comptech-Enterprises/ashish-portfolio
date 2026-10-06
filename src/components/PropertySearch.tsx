@@ -106,9 +106,14 @@ export default function PropertySearch() {
     setError("");
 
     const params = new URLSearchParams({ mode: MODE, emirate });
+    if (community) params.set("community", community);
     if (minBedrooms) params.set("minBedrooms", minBedrooms);
 
     try {
+      // Update URL query parameters cleanly without reload
+      const newUrl = `${window.location.pathname}?${params.toString()}#search`;
+      window.history.replaceState(null, "", newUrl);
+
       const res = await fetch(`/api/properties?${params.toString()}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Search failed.");
@@ -126,7 +131,7 @@ export default function PropertySearch() {
         <div className="prop-search__fields">
           <label>
             <span>Emirate</span>
-            <select value={emirate} onChange={(e) => setEmirate(e.target.value)}>
+            <select name="emirate" value={emirate} onChange={(e) => setEmirate(e.target.value)}>
               {EMIRATES.map((em) => (
                 <option key={em.value} value={em.value}>
                   {em.label}
@@ -137,7 +142,7 @@ export default function PropertySearch() {
 
           <label>
             <span>Community</span>
-            <select value={community} onChange={(e) => setCommunity(e.target.value)}>
+            <select name="community" value={community} onChange={(e) => setCommunity(e.target.value)}>
               {COMMUNITIES.map((c) => (
                 <option key={c.value} value={c.value}>
                   {c.label}
@@ -148,7 +153,7 @@ export default function PropertySearch() {
 
           <label>
             <span>Min. bedrooms</span>
-            <select value={minBedrooms} onChange={(e) => setMinBedrooms(e.target.value)}>
+            <select name="minBedrooms" value={minBedrooms} onChange={(e) => setMinBedrooms(e.target.value)}>
               <option value="">Any</option>
               {BEDROOM_OPTIONS.map((n) => (
                 <option key={n} value={n}>
