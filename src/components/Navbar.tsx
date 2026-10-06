@@ -8,6 +8,11 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", open);
+    const handleResize = () => {
+      if (window.innerWidth > 860) setOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [open]);
 
   return (
@@ -26,12 +31,17 @@ export default function Navbar() {
         <a href="#contact" className="btn btn--sm" data-magnet>
           <span>Let’s talk</span>
         </a>
-        <button className="nav__burger" aria-label="Menu" onClick={() => setOpen((o) => !o)}>
+        <button
+          className="nav__burger"
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+        >
           <i />
           <i />
         </button>
       </header>
-      <div className="menu">
+      <div className="menu" aria-hidden={!open}>
         {[...NAV, { href: "#contact", label: "Contact" }].map((n) => (
           <a key={n.href} href={n.href} onClick={() => setOpen(false)}>
             {n.label}

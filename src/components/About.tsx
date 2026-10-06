@@ -11,7 +11,16 @@ export default function About() {
         <Reveal variant="mask" className="about__portrait">
           <div className="portrait" data-tilt>
             <div className="portrait__fallback"><span>AL</span></div>
-            {hasPhoto && <Image src="/assets/ashish.webp" alt="Ashish Lalwani" fill sizes="(max-width:860px) 100vw, 45vw" style={{ objectFit: "cover", zIndex: 2 }} />}
+            {hasPhoto && (
+              <Image
+                src="/assets/ashish.webp"
+                alt="Ashish Lalwani"
+                fill
+                priority
+                sizes="(max-width:860px) 100vw, 45vw"
+                style={{ objectFit: "cover", zIndex: 2 }}
+              />
+            )}
             <div className="portrait__badge"><b>23</b>years in Dubai real estate</div>
           </div>
           <div className="rotor" aria-hidden="true">
@@ -25,7 +34,7 @@ export default function About() {
         <div className="about__text">
           <Reveal><p className="eyebrow">About Ashish</p></Reveal>
           <Reveal delay={100}>
-            <h2 className="h2">Most people see options.<br />I see <em>responsibility.</em></h2>
+            <h1 className="h2">Most people see options.<br />I see <em>responsibility.</em></h1>
           </Reveal>
           <Reveal delay={150}>
             <p className="lead">For 23 years, I&apos;ve helped families, NRIs, HNIs and first-time developers make decisions that don&apos;t just feel profitable, but feel right. My name, Ashish, literally means blessing, and I carry that meaning into how I work every single day.</p>

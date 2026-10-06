@@ -66,10 +66,12 @@ html[data-ready] .loader{pointer-events:none}
 .nav__burger i:first-child{top:6px}.nav__burger i:last-child{top:14px}
 .menu-open .nav__burger i:first-child{transform:translateY(4px) rotate(45deg)}
 .menu-open .nav__burger i:last-child{transform:translateY(-4px) rotate(-45deg)}
-.menu{position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:0 10vw;gap:10px;clip-path:circle(0 at 92% 6%);transition:clip-path .8s var(--ease)}
-.menu-open .menu{clip-path:circle(150% at 92% 6%)}
-.menu a{font-family:var(--serif);font-size:clamp(2.4rem,9vw,4rem)}
-@media(max-width:860px){.nav__links,.nav .btn--sm{display:none}.nav__burger{display:block}}
+.menu{position:fixed;inset:0;z-index:150;background:rgba(245,245,245,.98);display:flex;flex-direction:column;justify-content:center;padding:0 10vw;gap:14px;clip-path:circle(0 at 92% 6%);transition:clip-path .6s var(--ease),visibility .6s;visibility:hidden;pointer-events:none}
+.menu-open .menu{clip-path:circle(150% at 92% 6%);visibility:visible;pointer-events:auto}
+.menu a{font-family:var(--serif);font-size:clamp(2.4rem,9vw,4rem);color:var(--text);transition:color .2s ease}
+.menu a:hover{color:var(--gold-ink)}
+@media(max-width:860px){.nav__links,.nav .btn--sm{display:none}.nav__burger{display:block;z-index:201}}
+@media(min-width:861px){.menu{display:none!important}}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 34px;border-radius:999px;background:var(--gold);color:#000;font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;position:relative;overflow:hidden;transition:transform .25s ease,color .4s,border-color .4s;border:1px solid var(--gold);min-width:0;text-align:center}
@@ -146,8 +148,8 @@ html[data-ready] .loader{pointer-events:none}
 .card__icon svg{width:64px;height:64px;fill:none;stroke:var(--gold-ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-bottom:28px;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 2s var(--ease) .3s}
 .card.is-visible .card__icon svg{stroke-dashoffset:0}
 .card h3{font-family:var(--serif);font-size:2.2rem;font-weight:600;margin-bottom:10px}
-.card p{font-weight:300;opacity:.85;margin-bottom:22px}
-.card__more{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700}
+.card__more{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;transition:transform .25s ease,color .25s ease;cursor:pointer}
+.card__more:hover{color:var(--gold);transform:translateX(5px)}
 @media(max-width:900px){.cards{grid-template-columns:1fr}}
 
 /* areas (Logo Loop section) */
@@ -213,17 +215,18 @@ html[data-ready] .loader{pointer-events:none}
 @media(max-width:1024px){.community__grid{grid-template-columns:1fr;gap:40px}}
 
 /* contact (Instagram & LinkedIn only) */
-.contact{text-align:center;overflow:hidden}
-.contact::before{content:"";position:absolute;left:50%;top:50%;width:80vmin;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(183,155,111,.16),transparent 65%);animation:sunpulse 7s ease-in-out infinite;pointer-events:none}
+.contact{text-align:center;overflow:hidden;padding:clamp(28px, 4vw, 48px) 0}
+.contact::before{content:"";position:absolute;left:50%;top:50%;width:35vmin;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(183,155,111,.16),transparent 65%);animation:sunpulse 7s ease-in-out infinite;pointer-events:none}
 @keyframes sunpulse{50%{transform:scale(1.06);opacity:1}}
-.contact__big{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(3rem,10vw,9rem);line-height:.95;margin:10px 0 50px}
-.contact__row{position:relative;display:flex;gap:24px;justify-content:center;align-items:center;flex-wrap:wrap}
+.contact .eyebrow{margin-bottom:8px}
+.contact__big{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,4vw,3.2rem);line-height:1.05;margin:6px 0 20px}
+.contact__row{position:relative;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
 
-.social-card-btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 44px;border-radius:999px;background:#ffffff;border:1px solid rgba(183,155,111,.35);box-shadow:0 10px 30px rgba(0,0,0,.05);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;min-height:76px;min-width:250px;text-decoration:none}
-.social-card-btn:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(183,155,111,.22);border-color:var(--gold)}
-.social-logo{display:flex;align-items:center;justify-content:center;height:40px;width:auto}
-.social-logo--ig{height:40px;width:auto}
-.social-logo--li{height:38px;width:auto}
+.social-card-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 24px;border-radius:999px;background:#ffffff;border:1px solid rgba(183,155,111,.35);box-shadow:0 6px 18px rgba(0,0,0,.04);transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;min-height:48px;min-width:160px;text-decoration:none}
+.social-card-btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(183,155,111,.22);border-color:var(--gold)}
+.social-logo{display:flex;align-items:center;justify-content:center;height:26px;width:auto}
+.social-logo--ig{height:26px;width:auto}
+.social-logo--li{height:24px;width:auto}
 
 /* footer */
 .footer{background:#0a0a0a;color:#ffffff;padding:clamp(70px,9vw,110px) 0 40px;position:relative;overflow:hidden;border-top:1px solid rgba(183,155,111,.3)}
@@ -305,9 +308,9 @@ html[data-ready] .loader{pointer-events:none}
 
 @media(max-width:640px){
   .about{padding-top:110px}
-  .contact__big{font-size:clamp(2.3rem,9.2vw,3.8rem);line-height:1.05;margin:10px 0 32px}
-  .contact__row{flex-direction:column;width:100%;max-width:320px;margin:0 auto;gap:12px}
-  .social-card-btn{width:100%}
+  .contact__big{font-size:clamp(1.4rem,6vw,2rem);line-height:1.1;margin:6px 0 16px}
+  .contact__row{flex-direction:row;justify-content:center;width:100%;max-width:100%;margin:0 auto;gap:10px}
+  .social-card-btn{width:auto;min-width:140px;padding:8px 18px;min-height:42px}
 }
 
 @media(max-width:480px){
