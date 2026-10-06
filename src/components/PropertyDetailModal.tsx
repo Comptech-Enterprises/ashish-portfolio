@@ -26,11 +26,28 @@ export default function PropertyDetailModal({
     ? property.images
     : ["/assets/instagram/post-1.jpg"];
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
-    // Build personalized WhatsApp link for immediate direct connection
+    // 1. Dispatch email in background via Brevo route
+    try {
+      await fetch("/api/inquire", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+          property,
+        }),
+      });
+    } catch (err) {
+      console.warn("Could not send email notification:", err);
+    }
+
+    // 2. Build personalized WhatsApp link for immediate direct connection
     const inquiryText = `Hello Ashish, I am interested in this property:
 *${property.title}*
 Price: ${property.currency} ${property.price.toLocaleString()}
@@ -45,12 +62,10 @@ Note: ${formData.message || "Please provide more details."}`;
 
     const whatsappUrl = `https://wa.me/971545821600?text=${encodeURIComponent(inquiryText)}`;
 
-    setTimeout(() => {
-      setSubmitting(false);
-      setSubmitted(true);
-      // Open WhatsApp automatically in a new window/tab to send the lead directly
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    }, 600);
+    setSubmitting(false);
+    setSubmitted(true);
+    // Open WhatsApp automatically in a new window/tab to send the lead directly
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
