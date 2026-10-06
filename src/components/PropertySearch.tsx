@@ -3,6 +3,7 @@
 import { useRef, useState, FormEvent, PointerEvent } from "react";
 import type { PropertyListing } from "@/app/api/properties/route";
 import { COMMUNITIES } from "@/lib/content";
+import PropertyDetailModal from "./PropertyDetailModal";
 
 const EMIRATES = [
   { value: "dubai", label: "Dubai" },
@@ -54,45 +55,68 @@ function useSlider() {
   return { track, by, handlers: { onPointerDown, onPointerMove, onPointerUp: end, onPointerLeave: end, onClickCapture } };
 }
 
-function PropertySlider({ items }: { items: PropertyListing[] }) {
+function PropertySlider({
+  items,
+  onSelectProperty,
+}: {
+  items: PropertyListing[];
+  onSelectProperty: (p: PropertyListing) => void;
+}) {
   const { track, by, handlers } = useSlider();
   return (
     <div className="prop-slider">
-        <div className="prop-slider__bar">
-          <span>{items.length} properties</span>
-          <div className="prop-slider__nav">
-            <button type="button" aria-label="Previous properties" onClick={() => by(-1)}>←</button>
-            <button type="button" aria-label="Next properties" onClick={() => by(1)}>→</button>
+      <div className="prop-slider__bar">
+        <span>{items.length} properties</span>
+        <div className="prop-slider__nav">
+          <button type="button" aria-label="Previous properties" onClick={() => by(-1)}>←</button>
+          <button type="button" aria-label="Next properties" onClick={() => by(1)}>→</button>
+        </div>
+      </div>
+      <div className="prop-slider__track" ref={track} data-cursor="Drag" {...handlers}>
+        {items.map((item) => (
+          <div
+            key={item.propertyId}
+            onClick={() => onSelectProperty(item)}
+            className="prop-card"
+            style={{ cursor: "pointer" }}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelectProperty(item);
+              }
+            }}
+          >
+            <div className="prop-card__body">
+              {item.images && item.images.length > 0 && (
+                <div style={{ borderRadius: "14px", overflow: "hidden", marginBottom: "16px", height: "180px", background: "#f0ede8" }}>
+                  <img
+                    src={item.images[0]}
+                    alt={item.title}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <span className="prop-card__price">{formatPrice(item.price, item.currency)}</span>
+              <h3>{item.title}</h3>
+              <p className="prop-card__meta">
+                {item.propertyType} · {item.bedrooms > 0 ? `${item.bedrooms} bd` : "Studio"} · {item.bathrooms} ba · {item.areaSqft ? `${item.areaSqft.toLocaleString()} sqft` : ""}
+              </p>
+              <p className="prop-card__location">{item.community ? `${item.community}, ` : ""}{item.city}</p>
+              <span className="prop-card__cta">View &amp; Inquire →</span>
+            </div>
           </div>
-        </div>
-        <div className="prop-slider__track" ref={track} data-cursor="Drag" {...handlers}>
-          {items.map((item) => (
-            <a
-              key={item.propertyId}
-              href={item.listingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="prop-card"
-              draggable={false}
-            >
-              <div className="prop-card__body">
-                <span className="prop-card__price">{formatPrice(item.price, item.currency)}</span>
-                <h3>{item.title}</h3>
-                <p className="prop-card__meta">
-                  {item.propertyType} · {item.bedrooms} bd · {item.bathrooms} ba · {item.areaSqft.toLocaleString()} sqft
-                </p>
-                <p className="prop-card__location">{item.community ? `${item.community}, ` : ""}{item.city}</p>
-                <span className="prop-card__cta">View listing →</span>
-              </div>
-            </a>
-          ))}
-        </div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function PropertySearch() {
   const [emirate, setEmirate] = useState("dubai");
+  const [selectedProperty, setSelectedProperty] = useState<PropertyListing | null>(null);
   const [community, setCommunity] = useState("");
   const [minBedrooms, setMinBedrooms] = useState("");
 
@@ -182,8 +206,20 @@ export default function PropertySearch() {
           <p className="prop-search__status">No properties matched your search. Try widening your filters.</p>
         )}
 
-        {status === "done" && results.length > 0 && <PropertySlider items={results} />}
+        {status === "done" && results.length > 0 && (
+          <PropertySlider
+            items={results}
+            onSelectProperty={(prop) => setSelectedProperty(prop)}
+          />
+        )}
       </div>
+
+      {selectedProperty && (
+        <PropertyDetailModal
+          property={selectedProperty}
+          onClose={() => setSelectedProperty(null)}
+        />
+      )}
     </div>
   );
 }
