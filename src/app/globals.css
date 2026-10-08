@@ -191,16 +191,16 @@ html[data-ready] .loader{pointer-events:none}
 @media(max-width:1024px){.community__grid{grid-template-columns:1fr;gap:40px}}
 
 /* contact (Instagram & LinkedIn only) */
-.contact{text-align:center;overflow:hidden;padding:clamp(28px, 4vw, 48px) 0}
+.contact{text-align:center;overflow:hidden;padding:clamp(38px, 5.5vw, 65px) 0}
 .contact::before{content:"";position:absolute;left:50%;top:50%;width:35vmin;aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(183,155,111,.16),transparent 65%);animation:sunpulse 7s ease-in-out infinite;pointer-events:none}
 @keyframes sunpulse{50%{transform:scale(1.06);opacity:1}}
-.contact .eyebrow{margin-bottom:8px}
-.contact__big{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,4vw,3.2rem);line-height:1.05;margin:6px 0 20px}
-.contact__row{position:relative;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.contact .eyebrow{margin-bottom:12px;font-size:.9rem;letter-spacing:.32em}
+.contact__big{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5.2vw,4.1rem);line-height:1.06;margin:8px 0 26px}
+.contact__row{position:relative;display:flex;gap:30px;justify-content:center;align-items:center;flex-wrap:wrap}
 
-.social-card-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 24px;border-radius:999px;background:#ffffff;border:1px solid rgba(183,155,111,.35);box-shadow:0 6px 18px rgba(0,0,0,.04);transition:box-shadow .3s,border-color .3s;min-height:56px;min-width:160px;text-decoration:none}
-.social-card-btn:hover{box-shadow:0 10px 24px rgba(183,155,111,.22);border-color:var(--gold)}
-.social-logo{display:block;height:34px;width:auto}
+.social-card-btn{display:inline-flex;align-items:center;justify-content:center;padding:0;background:transparent;border:none;box-shadow:none;transition:transform .25s ease,opacity .25s ease;text-decoration:none}
+.social-card-btn:hover{transform:scale(1.1);opacity:.92}
+.social-logo{display:block;height:clamp(54px, 6.5vw, 68px);width:auto;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(0,0,0,.08))}
 
 /* footer */
 .footer{background:#0a0a0a;color:#ffffff;padding:clamp(70px,9vw,110px) 0 40px;position:relative;overflow:hidden;border-top:1px solid rgba(183,155,111,.3)}
@@ -275,9 +275,9 @@ html[data-ready] .loader{pointer-events:none}
 
 @media(max-width:640px){
   .about{padding-top:110px}
-  .contact__big{font-size:clamp(1.4rem,6vw,2rem);line-height:1.1;margin:6px 0 16px}
-  .contact__row{flex-direction:row;justify-content:center;width:100%;max-width:100%;margin:0 auto;gap:10px}
-  .social-card-btn{width:auto;min-width:140px;padding:8px 18px;min-height:42px}
+  .contact__big{font-size:clamp(1.75rem,7.5vw,2.5rem);line-height:1.1;margin:8px 0 20px}
+  .contact__row{flex-direction:row;justify-content:center;width:100%;max-width:100%;margin:0 auto;gap:22px}
+  .social-card-btn{width:auto;min-width:auto;padding:0;min-height:auto}
 }
 
 @media(max-width:480px){

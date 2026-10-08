@@ -8,7 +8,7 @@ const STORAGE_KEY = "ashishgpt_email";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const SUGGESTIONS = [
   "Which areas give the best rental yield?",
-  "Off-plan or ready — what should I pick?",
+  "Off-plan or ready: what should I pick?",
   "I'm an NRI. How do I buy in Dubai?",
 ];
 
