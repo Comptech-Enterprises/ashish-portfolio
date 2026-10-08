@@ -3,14 +3,15 @@ import ScrollFx from "@/components/ScrollFx";
 import PointerFx from "@/components/PointerFx";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
-import Stats from "@/components/Stats";
+import Videos from "@/components/Videos";
 import Services from "@/components/Services";
 import Areas from "@/components/Areas";
 import Properties from "@/components/Properties";
-import Process from "@/components/Process";
+import DubaiIT from "@/components/DubaiIT";
 import Community from "@/components/Community";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import AshishGPT from "@/components/AshishGPT";
 
 export default function Home() {
   return (
@@ -27,15 +28,16 @@ export default function Home() {
       <Navbar />
       <main id="top">
         <About />
-        <Stats />
+        <Videos />
         <Services />
         <Areas />
         <Properties />
-        <Process />
+        <DubaiIT />
         <Community />
         <Contact />
       </main>
       <Footer />
+      <AshishGPT />
     </>
   );
 }

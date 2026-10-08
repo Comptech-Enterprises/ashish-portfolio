@@ -9,7 +9,7 @@ export default function About() {
     <section className="about section" id="about">
       <div className="wrap about__grid">
         <Reveal variant="mask" className="about__portrait">
-          <div className="portrait" data-tilt>
+          <div className="portrait">
             <div className="portrait__fallback"><span>AL</span></div>
             {hasPhoto && (
               <Image
@@ -69,9 +69,6 @@ export default function About() {
           <Reveal delay={450}>
             <p>Five years from now, my goal is simple: a business that grows because of the values I built into it, even when I&apos;m not in the room.</p>
             <p className="about__close">If you want a calm, discreet advisor who treats your decision like his own, I&apos;m here to guide you.</p>
-          </Reveal>
-          <Reveal delay={500}>
-            <ul className="ticks"><li>23 years of market experience</li><li>Families, NRIs &amp; HNIs worldwide</li><li>Calm, discreet guidance</li></ul>
           </Reveal>
         </div>
       </div>
