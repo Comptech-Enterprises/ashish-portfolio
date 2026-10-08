@@ -55,8 +55,9 @@ html[data-ready] .loader{pointer-events:none}
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,4vw,48px);transition:background .4s,padding .4s,transform .5s var(--ease)}
 .nav.is-stuck{background:rgba(245,245,245,.88);box-shadow:0 1px 0 rgba(0,0,0,.06);backdrop-filter:blur(14px);padding-top:12px;padding-bottom:12px}
-.nav.is-hidden{transform:translateY(-100%)}
-.nav__logo{font-family:var(--serif);font-size:1.9rem;font-weight:700;letter-spacing:.02em}
+.nav__logo{display:inline-flex;align-items:center;line-height:1}
+.nav__logo-img{display:block;height:clamp(28px, 3.2vw, 36px);width:auto;object-fit:contain;transition:transform .25s ease}
+.nav__logo:hover .nav__logo-img{transform:scale(1.05)}
 .nav__links{display:flex;gap:34px}
 .nav__links a{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;position:relative;padding:4px 0}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
@@ -382,7 +383,11 @@ html[data-ready] .loader{pointer-events:none}
 /* ---------- Dubai IT ---------- */
 .dubai-it{background:var(--surface);color:var(--text);overflow:hidden}
 .dubai-it__inner{max-width:880px}
-.dubai-it__kicker{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.8rem);color:var(--gold-ink);margin:-8px 0 40px;padding-left:18px;border-left:3px solid var(--gold)}
+.dubai-it__header{text-align:center;margin-bottom:48px;display:flex;flex-direction:column;align-items:center}
+.dubai-it__title{font-family:var(--serif);font-weight:800;font-size:clamp(2.5rem,7.5vw,4.5rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;color:var(--text);margin:0 auto 16px;text-align:center}
+.dubai-it__sub{font-family:var(--serif);font-weight:600;font-size:clamp(1.75rem,4.5vw,2.8rem);line-height:1.15;color:var(--text);text-align:center;margin:0 auto 16px}
+.dubai-it__sub em{font-style:italic;color:var(--gold-ink)}
+.dubai-it__kicker{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--gold-ink);margin:0 auto;text-align:center}
 .dubai-it__story p{font-size:1.08rem;line-height:1.75;color:rgba(0,0,0,.75);margin-bottom:20px;max-width:64ch}
 .dubai-it__story .lead{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:600;color:var(--text);margin-bottom:14px}
 .dubai-it__story strong{color:var(--text)}

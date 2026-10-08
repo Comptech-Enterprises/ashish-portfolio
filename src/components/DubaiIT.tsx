@@ -11,13 +11,19 @@ export default function DubaiIT() {
   return (
     <section className="dubai-it section" id="dubai-it">
       <div className="wrap dubai-it__inner">
-        <Reveal><p className="eyebrow">Dubai IT</p></Reveal>
-        <Reveal delay={100}>
-          <h2 className="h2">Say what you do.<br /><em>Do what you say.</em></h2>
-        </Reveal>
-        <Reveal delay={150}>
-          <p className="dubai-it__kicker">This statement is more than any brochure.</p>
-        </Reveal>
+        <div className="dubai-it__header">
+          <Reveal>
+            <h2 className="dubai-it__title">DUBAI IT</h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="dubai-it__sub">
+              Say what you do.<br /><em>Do what you say.</em>
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <p className="dubai-it__kicker">This statement is more than any brochure.</p>
+          </Reveal>
+        </div>
 
         <div className="dubai-it__story">
           <Reveal delay={100}><p className="lead">I came to Dubai in 2003.</p></Reveal>
