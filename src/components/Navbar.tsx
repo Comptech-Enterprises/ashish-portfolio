@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { NAV } from "@/lib/content";
 
@@ -18,8 +19,15 @@ export default function Navbar() {
   return (
     <>
       <header className="nav" id="nav">
-        <a href="#top" className="nav__logo" data-magnet>
-          A<em>L</em>
+        <a href="#top" className="nav__logo" data-magnet aria-label="BNI">
+          <Image
+            src="/assets/bni.png"
+            alt="BNI"
+            width={104}
+            height={40}
+            priority
+            className="nav__logo-img"
+          />
         </a>
         <nav className="nav__links">
           {NAV.map((n) => (
