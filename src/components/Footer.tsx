@@ -81,7 +81,7 @@ export default function Footer() {
               <li><a href="#about">About Ashish</a></li>
               <li><a href="#services">Advisory Services</a></li>
               <li><a href="#areas">Prime Communities</a></li>
-              <li><a href="#search">Property Search</a></li>
+              <li><a href="#search">Ask AshishGPT</a></li>
               <li><a href="#dubai-it">Dubai IT</a></li>
               <li><a href="#community">Market Walkthroughs</a></li>
               <li><a href="#contact">Direct Contact</a></li>
