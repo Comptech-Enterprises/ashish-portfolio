@@ -24,7 +24,7 @@ export default function Footer() {
                 className="footer__cta-btn footer__cta-btn--gold"
                 aria-label="Chat on WhatsApp"
               >
-                <span>WhatsApp Advisor</span>
+                <span>WhatsApp</span>
               </a>
               <a
                 href="tel:+97145518469"
@@ -47,35 +47,13 @@ export default function Footer() {
                 </a>
               </div>
               <div className="footer__contact-item">
-                <span className="footer__contact-label">Mobile &amp; WhatsApp</span>
-                <a href="tel:+971545821600" className="footer__contact-val">
-                  +971 54 582 1600
-                </a>
-              </div>
-              <div className="footer__contact-item">
                 <span className="footer__contact-label">Email Inquiries</span>
-                <a
-                  href="mailto:info@vibgyorrealestate.com"
-                  className="footer__contact-val"
-                >
-                  info@vibgyorrealestate.com
-                </a>
                 <a
                   href="mailto:ashish@vibgyorrealestate.com"
                   className="footer__contact-val"
-                  style={{ fontSize: "0.85rem", opacity: 0.8 }}
                 >
                   ashish@vibgyorrealestate.com
                 </a>
-              </div>
-              <div className="footer__contact-item">
-                <span className="footer__contact-label">Working Hours</span>
-                <p className="footer__contact-val" style={{ margin: 0 }}>
-                  Mon – Sat: 9:00 AM – 6:00 PM
-                </p>
-                <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", margin: 0 }}>
-                  Sunday by appointment
-                </p>
               </div>
             </div>
           </div>
@@ -86,21 +64,12 @@ export default function Footer() {
             <div className="footer__branches">
               <div className="footer__branch">
                 <b>Head Office · Motor City</b>
-                <p>Office No. 2104, Control Tower, Motor City, Dubai, United Arab Emirates</p>
               </div>
               <div className="footer__branch">
                 <b>Barsha Heights Branch</b>
-                <p>Office No. 1308, Grosvenor Business Tower, Barsha Heights, Dubai, UAE</p>
-                <a href="tel:+97144572104" style={{ fontSize: "0.78rem", color: "var(--gold)" }}>
-                  Tel: +971 4 457 2104
-                </a>
               </div>
               <div className="footer__branch">
                 <b>Arjan Branch</b>
-                <p>The V Building, Shop No. 01, Arjan, Dubai, UAE</p>
-                <a href="tel:+97143993776" style={{ fontSize: "0.78rem", color: "var(--gold)" }}>
-                  Tel: +971 4 399 3776
-                </a>
               </div>
             </div>
           </div>
@@ -113,7 +82,7 @@ export default function Footer() {
               <li><a href="#services">Advisory Services</a></li>
               <li><a href="#areas">Prime Communities</a></li>
               <li><a href="#search">Property Search</a></li>
-              <li><a href="#process">Buying Process</a></li>
+              <li><a href="#dubai-it">Dubai IT</a></li>
               <li><a href="#community">Market Walkthroughs</a></li>
               <li><a href="#contact">Direct Contact</a></li>
             </ul>

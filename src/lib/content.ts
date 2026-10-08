@@ -11,7 +11,7 @@ export const NAV = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
   { href: "#areas", label: "Areas" },
-  { href: "#process", label: "Process" },
+  { href: "#dubai-it", label: "Dubai IT" },
   { href: "#community", label: "Community" },
 ];
 
@@ -23,37 +23,6 @@ export const COMMUNITIES = [
   { value: "business-bay", label: "Business Bay" },
   { value: "jumeirah-village-circle", label: "Jumeirah Village Circle" },
   { value: "dubai-hills-estate", label: "Dubai Hills Estate" },
-];
-
-export const STATS = [
-  {
-    value: 23,
-    suffix: "+",
-    tag: "Advisor Track Record",
-    title: "Years in Dubai",
-    label: "Local context for family homes, investments and portfolio moves.",
-  },
-  {
-    value: 6,
-    suffix: "",
-    tag: "Prime Communities",
-    title: "Area Shortlists",
-    label: "Downtown, Marina, Palm, Business Bay, JVC and Dubai Hills covered.",
-  },
-  {
-    value: 3,
-    suffix: "",
-    tag: "Property Tracks",
-    title: "Buy, Sell, Invest",
-    label: "Residential, commercial and investment decisions handled end to end.",
-  },
-  {
-    value: 4,
-    suffix: "",
-    tag: "Closing Flow",
-    title: "Steps to Handover",
-    label: "Discovery, shortlist, negotiation, paperwork and handover support.",
-  },
 ];
 
 export const SERVICES = [
@@ -107,9 +76,9 @@ export const AREAS = [
   },
 ];
 
-export const STEPS = [
-  { title: "Discover", text: "A short conversation about your goals, budget and timeline: buying, selling or investing." },
-  { title: "Shortlist", text: "Hand-picked properties with the real numbers: price trends, yields, service charges." },
-  { title: "Negotiate", text: "Sharp local knowledge working for you, so the deal is the right one, not just a deal." },
-  { title: "Close & handover", text: "Paperwork, registration and handover handled end to end. Then we stay in touch." },
+/** Video placeholders. Set src (mp4 / embed url) to activate a slot. */
+export const VIDEOS = [
+  { title: "Video one", src: "" },
+  { title: "Video two", src: "" },
+  { title: "Video three", src: "" },
 ];

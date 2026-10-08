@@ -7,10 +7,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Emaar Properties">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 2L3 9v13h6v-8h6v8h6V9L12 2zm0 3.5l5 3.9v9.6h-2v-8H9v8H7V9.4l5-3.9z" />
-        </svg>
-        <span className="dev-partner-badge__name">EMAAR</span>
+        <Image
+          src="/assets/developers/emaar.svg"
+          alt="Emaar Properties"
+          width={110}
+          height={28}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Emaar Properties",
@@ -18,9 +21,14 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Nakheel">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-        </svg>
+        <Image
+          src="/assets/developers/nakheel.svg"
+          alt="Nakheel"
+          width={32}
+          height={28}
+          className="dev-partner-badge__logo"
+          style={{ width: "auto" }}
+        />
         <span className="dev-partner-badge__name">NAKHEEL</span>
       </div>
     ),
@@ -29,10 +37,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="DAMAC Properties">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 2L2 9l10 7 10-7-10-7zm0 15L4 10.5V17l8 5 8-5v-6.5L12 17z" />
-        </svg>
-        <span className="dev-partner-badge__name">DAMAC</span>
+        <Image
+          src="/assets/developers/damac.svg"
+          alt="DAMAC Properties"
+          width={110}
+          height={26}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "DAMAC Properties",
@@ -40,10 +51,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Sobha Realty">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 2l2.4 7.4h7.8l-6.3 4.6 2.4 7.4-6.3-4.6-6.3 4.6 2.4-7.4-6.3-4.6h7.8z" />
-        </svg>
-        <span className="dev-partner-badge__name">SOBHA REALTY</span>
+        <Image
+          src="/assets/developers/sobha.svg"
+          alt="Sobha Realty"
+          width={110}
+          height={28}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Sobha Realty",
@@ -51,10 +65,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Meraas">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zm-9 9h7v7H4v-7zm9 0h7v7h-7v-7z" />
-        </svg>
-        <span className="dev-partner-badge__name">MERAAS</span>
+        <Image
+          src="/assets/developers/meraas.svg"
+          alt="Meraas"
+          width={100}
+          height={26}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Meraas",
@@ -62,11 +79,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Omniyat">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />
-          <circle cx="12" cy="12" r="4" fill="currentColor" />
-        </svg>
-        <span className="dev-partner-badge__name">OMNIYAT</span>
+        <Image
+          src="/assets/developers/omniyat.svg"
+          alt="Omniyat"
+          width={110}
+          height={22}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Omniyat",
@@ -74,10 +93,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Ellington Properties">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M5 4h14v3H8v4h10v3H8v6H5V4z" />
-        </svg>
-        <span className="dev-partner-badge__name">ELLINGTON</span>
+        <Image
+          src="/assets/developers/ellington.png"
+          alt="Ellington Properties"
+          width={115}
+          height={26}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Ellington Properties",
@@ -85,9 +107,14 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Aldar Properties">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 3L2 21h20L12 3zm0 4.8l6.2 11.2H5.8L12 7.8z" />
-        </svg>
+        <Image
+          src="/assets/developers/aldar.png"
+          alt="Aldar Properties"
+          width={28}
+          height={28}
+          className="dev-partner-badge__logo"
+          style={{ width: "auto" }}
+        />
         <span className="dev-partner-badge__name">ALDAR</span>
       </div>
     ),
@@ -96,10 +123,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Binghatti">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M6 3h7a5 5 0 0 1 0 10H6V3zm3 3v4h4a2 2 0 1 0 0-4H9zm-3 7h8a5 5 0 0 1 0 10H6v-10zm3 3v4h5a2 2 0 1 0 0-4H9z" />
-        </svg>
-        <span className="dev-partner-badge__name">BINGHATTI</span>
+        <Image
+          src="/assets/developers/binghatti.png"
+          alt="Binghatti"
+          width={110}
+          height={26}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Binghatti",
@@ -107,10 +137,13 @@ const DEVELOPER_PARTNERS: LogoItem[] = [
   {
     node: (
       <div className="dev-partner-badge" title="Danube Properties">
-        <svg viewBox="0 0 24 24" className="dev-partner-badge__icon" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-        </svg>
-        <span className="dev-partner-badge__name">DANUBE</span>
+        <Image
+          src="/assets/developers/danube.png"
+          alt="Danube Properties"
+          width={110}
+          height={26}
+          className="dev-partner-badge__logo"
+        />
       </div>
     ),
     title: "Danube Properties",
@@ -162,12 +195,12 @@ export default function Areas() {
       <div className="areas__loop-wrap">
         <LogoLoop
           logos={areaLogos}
-          speed={45}
+          speed={90}
           direction="left"
           gap={24}
           logoHeight={220}
           pauseOnHover={true}
-          hoverSpeed={10}
+          hoverSpeed={20}
           fadeOut={true}
           fadeOutColor="#F5F5F5"
           scaleOnHover={false}

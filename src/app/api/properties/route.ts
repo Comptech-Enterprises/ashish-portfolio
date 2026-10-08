@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SAMPLE_PROPERTIES } from "@/lib/sampleProperties";
 
-const ACTOR = "crawlerbros~property-finder-scraper";
-const MAX_ITEMS = 20;
+interface RawProperty {
+  property_id?: string | number;
+  id?: string | number;
+  title?: string;
+  description?: string;
+  property_type?: string;
+  price?: { value?: number; currency?: string } | number;
+  bedrooms?: number | string;
+  bathrooms?: number | string;
+  size?: { value?: number };
+  floor_plan_area?: number;
+  furnished?: string;
+  address?: { full_name?: string };
+  cover_image_url?: string;
+  images?: string[];
+  location?: { city?: string; community?: string; sub_community?: string };
+  location_tree?: Array<{ name?: string }>;
+  developer?: { name?: string };
+  listed_date?: string;
+}
 
 const EMIRATES = new Set([
   "",
@@ -80,27 +98,41 @@ export async function GET(request: NextRequest) {
         const rawProperties = data?.data?.properties || data?.properties || [];
 
         if (Array.isArray(rawProperties) && rawProperties.length > 0) {
-          const items: PropertyListing[] = rawProperties.map((p: any) => ({
-            propertyId: String(p.property_id || p.id),
-            title: p.title || "Luxury UAE Property",
-            description: p.description || "",
-            propertyType: p.property_type || "Apartment",
-            offeringType: "forSale",
-            price: p.price?.value || p.price || 0,
-            currency: p.price?.currency || "AED",
-            bedrooms: Number(p.bedrooms) || 0,
-            bathrooms: Number(p.bathrooms) || 0,
-            areaSqft: p.size?.value || p.floor_plan_area || 0,
-            furnished: p.furnished === "YES" ? "Furnished" : "Unfurnished",
-            fullAddress: p.address?.full_name || "",
-            city: p.location_tree?.[0]?.name || "Dubai",
-            community: p.location_tree?.[1]?.name || "",
-            agentName: "Ashish Lalwani",
-            brokerName: "Vibgyor Real Estate",
-            listingUrl: `#property-${p.property_id || p.id}`,
-            listedDate: p.listed_date || "",
-            images: Array.isArray(p.images) ? p.images : [],
-          }));
+          const items: PropertyListing[] = rawProperties.map((p: RawProperty) => {
+            const rawPrice = p.price;
+            const price =
+              typeof rawPrice === "object" && rawPrice !== null
+                ? Number(rawPrice.value) || 0
+                : typeof rawPrice === "number"
+                ? rawPrice
+                : 0;
+            const currency =
+              typeof rawPrice === "object" && rawPrice !== null && rawPrice.currency
+                ? rawPrice.currency
+                : "AED";
+
+            return {
+              propertyId: String(p.property_id || p.id),
+              title: p.title || "Luxury UAE Property",
+              description: p.description || "",
+              propertyType: p.property_type || "Apartment",
+              offeringType: "forSale",
+              price,
+              currency,
+              bedrooms: Number(p.bedrooms) || 0,
+              bathrooms: Number(p.bathrooms) || 0,
+              areaSqft: p.size?.value || p.floor_plan_area || 0,
+              furnished: p.furnished === "YES" ? "Furnished" : "Unfurnished",
+              fullAddress: p.address?.full_name || "",
+              city: p.location_tree?.[0]?.name || "Dubai",
+              community: p.location_tree?.[1]?.name || "",
+              agentName: "Ashish Lalwani",
+              brokerName: "Vibgyor Real Estate",
+              listingUrl: `#property-${p.property_id || p.id}`,
+              listedDate: p.listed_date || "",
+              images: Array.isArray(p.images) ? p.images : [],
+            };
+          });
 
           return NextResponse.json({ items });
         }
