@@ -22,7 +22,7 @@ export default function DubaiIT() {
         <div className="dubai-it__story">
           <Reveal delay={100}><p className="lead">I came to Dubai in 2003.</p></Reveal>
           <Reveal delay={150}>
-            <p>Over the past 23+ years, I have watched this city turn ambition into reality &mdash; project after project, vision after vision.</p>
+            <p>Over the past 23+ years, I have watched this city turn ambition into reality, project after project, vision after vision.</p>
           </Reveal>
           <Reveal delay={200}>
             <p>And I&apos;ve learned that in Dubai, promises are easy. <strong>Delivery is what matters.</strong></p>

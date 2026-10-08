@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     const htmlContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
         <h2 style="color: #b79b6f; border-bottom: 2px solid #b79b6f; padding-bottom: 10px;">
-          🏡 New Property Inquiry Received
+          New Property Inquiry Received
         </h2>
         
         <p style="font-size: 15px; color: #333;">
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
           sender: { name: senderName, email: senderEmail },
           to: [{ email: recipientEmail, name: "Ashish Lalwani" }],
           replyTo: { email, name },
-          subject: `⚡ New Lead: ${name} inquiring about ${property?.title || "Dubai Property"}`,
+          subject: `New Lead: ${name} inquiring about ${property?.title || "Dubai Property"}`,
           htmlContent,
         }),
       });

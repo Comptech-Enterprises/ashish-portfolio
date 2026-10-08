@@ -125,7 +125,7 @@ Note: ${formData.message || "Please provide more details."}`;
 
             <div className="prop-modal-location">
               <p className="prop-loc-text">
-                📍 {property.fullAddress || `${property.community ? property.community + ", " : ""}${property.city}`}
+                {property.fullAddress || `${property.community ? property.community + ", " : ""}${property.city}`}
               </p>
               {property.description && (
                 <p className="prop-desc-text">{property.description}</p>
@@ -224,7 +224,7 @@ Note: ${formData.message || "Please provide more details."}`;
                 </button>
 
                 <p className="lead-privacy-note">
-                  🔒 Your details remain private and go straight to Ashish Lalwani.
+                  Your details remain private and go straight to Ashish Lalwani.
                 </p>
               </form>
             )}
