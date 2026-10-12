@@ -139,7 +139,34 @@ html[data-ready] .loader{pointer-events:none}
 .card h3{font-family:var(--serif);font-size:2.2rem;font-weight:600;margin-bottom:10px}
 .card__more{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;transition:transform .25s ease,color .25s ease;cursor:pointer}
 .card__more:hover{color:var(--gold);transform:translateX(5px)}
-@media(max-width:900px){.cards{grid-template-columns:1fr}}
+
+/* services carousel */
+.services-carousel{position:relative;width:100%;max-width:720px;margin:46px auto 0}
+.services-carousel__viewport{overflow:hidden;width:100%;border-radius:26px;padding:4px}
+.services-carousel__track{display:flex;transition:transform .55s cubic-bezier(.16,1,.3,1);will-change:transform}
+.services-carousel__slide{flex:0 0 100%;width:100%;min-width:100%;box-sizing:border-box}
+.services-carousel__slide .card{width:100%}
+.services-carousel__slide .card__inner{min-height:360px}
+.services-carousel__controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px;flex-wrap:wrap}
+.services-carousel__btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#ffffff;border:1px solid rgba(183,155,111,.35);color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,.04);transition:all .25s ease;cursor:pointer}
+.services-carousel__btn:hover{border-color:var(--gold);color:var(--gold-ink);background:rgba(183,155,111,.08);transform:scale(1.06)}
+.services-carousel__btn:active{transform:scale(.95)}
+.services-carousel__tabs{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.04);padding:4px 6px;border-radius:999px;border:1px solid rgba(183,155,111,.22)}
+.services-carousel__tab{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;border:none;background:transparent;color:var(--text);font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.08em;transition:all .25s ease;cursor:pointer}
+.services-carousel__tab:hover{color:var(--gold-ink)}
+.services-carousel__tab.is-active{background:#ffffff;color:var(--gold-ink);box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.services-carousel__tab-num{font-family:var(--serif);font-size:.9rem;color:var(--gold)}
+@media(max-width:640px){
+  .services-carousel{margin-top:28px}
+  .services-carousel__controls{gap:10px}
+  .services-carousel__btn{width:38px;height:38px}
+  .services-carousel__tabs{gap:4px;padding:3px 4px}
+  .services-carousel__tab{padding:6px 12px;font-size:.74rem}
+  .services-carousel__slide .card__inner{min-height:310px;padding:32px 24px 26px}
+}
+@media(max-width:480px){
+  .services-carousel__tab-label{display:none}
+}
 
 /* areas (Logo Loop section) */
 .areas{position:relative;overflow:hidden}

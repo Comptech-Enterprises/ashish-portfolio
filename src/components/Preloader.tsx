@@ -1,31 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
-const DURATION = 2300;
+const DURATION = 2200;
 
 export default function Preloader() {
-  const bar = useRef<HTMLSpanElement>(null);
-  const pct = useRef<HTMLParagraphElement>(null);
-
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const total = reduce ? 200 : DURATION;
-    const t0 = performance.now();
-    let raf = 0;
-    let timer: ReturnType<typeof setTimeout>;
-    const step = (now: number) => {
-      const p = Math.min(100, ((now - t0) / total) * 100);
-      if (bar.current) bar.current.style.width = p + "%";
-      if (pct.current) pct.current.textContent = String(Math.round(p));
-      if (p < 100) raf = requestAnimationFrame(step);
-      else timer = setTimeout(() => document.documentElement.setAttribute("data-ready", ""), 250);
-    };
-    raf = requestAnimationFrame(step);
-    return () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(timer);
-    };
+    const timer = setTimeout(() => {
+      document.documentElement.setAttribute("data-ready", "");
+    }, total);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -40,12 +26,6 @@ export default function Preloader() {
       </div>
       <p className="loader__name">
         Ashish <em>Lalwani</em>
-      </p>
-      <div className="loader__bar">
-        <span ref={bar} />
-      </div>
-      <p className="loader__pct" ref={pct}>
-        0
       </p>
     </div>
   );
