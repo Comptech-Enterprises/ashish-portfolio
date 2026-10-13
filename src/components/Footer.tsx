@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="footer__brand">
             <h3>Ashish Lalwani</h3>
             <p className="footer__brand-sub">
-              Senior Advisor · Vibgyor Real Estate
+              General Manager · Vibgyor Real Estate
             </p>
             <p className="footer__brand-desc">
               Guiding homebuyers, high-net-worth families, and international

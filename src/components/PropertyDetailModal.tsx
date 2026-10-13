@@ -141,7 +141,7 @@ Note: ${formData.message || "Please provide more details."}`;
               </div>
               <div>
                 <h4>Ashish Lalwani</h4>
-                <p className="prop-agent-title">Senior Advisor · Vibgyor Real Estate</p>
+                <p className="prop-agent-title">General Manager · Vibgyor Real Estate</p>
                 <span className="prop-agent-exp">23+ Years in Dubai</span>
               </div>
             </div>
