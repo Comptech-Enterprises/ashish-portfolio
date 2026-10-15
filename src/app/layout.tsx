@@ -31,6 +31,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        <meta name="darkreader-lock" content="" />
+        <meta name="color-scheme" content="dark" />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

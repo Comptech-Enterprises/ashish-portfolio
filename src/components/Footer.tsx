@@ -90,7 +90,7 @@ export default function Footer() {
               <span className="footer__contact-label" style={{ display: "block", marginBottom: "8px" }}>
                 Prime Micro-Markets
               </span>
-              <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.5 }}>
+              <p className="footer__micromarkets-text">
                 Downtown Dubai · Palm Jumeirah · Dubai Marina · Business Bay · Dubai Hills · JVC
               </p>
             </div>

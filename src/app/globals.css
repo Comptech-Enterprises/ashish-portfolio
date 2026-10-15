@@ -483,3 +483,11 @@ html[data-ready] .loader{pointer-events:none}
 .gptfab__cloud::after{content:"";position:absolute;bottom:-6px;right:34px;width:12px;height:12px;background:#fff;border-right:1px solid rgba(183,155,111,.55);border-bottom:1px solid rgba(183,155,111,.55);transform:rotate(45deg)}
 @keyframes gptbob{50%{transform:translateY(-5px)}}
 @media(max-width:480px){.gptfab{right:14px;bottom:14px}.gptfab__btn{padding:14px}.gptfab__label{display:none}}
+.footer__micromarkets-text{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5}
+.gpt__formatted-content{display:flex;flex-direction:column;gap:8px}
+.gpt__paragraph{line-height:1.6;margin:0}
+.gpt__section-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--gold-2);margin-top:10px;margin-bottom:2px;letter-spacing:.02em}
+.gpt__list{list-style:none;padding:0;margin:4px 0 8px;display:flex;flex-direction:column;gap:6px}
+.gpt__list-item{position:relative;padding-left:16px;line-height:1.55}
+.gpt__list-item::before{content:"•";position:absolute;left:2px;color:var(--gold);font-weight:bold}
+.gpt__bold{color:#fff;font-weight:700}

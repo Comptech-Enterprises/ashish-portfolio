@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
+import FormattedMessage from "./FormattedMessage";
 
 type Msg = { role: "user" | "bot"; text: string };
 
@@ -72,22 +73,46 @@ export default function AshishChat() {
     setSubmittedEmail(value);
   }
 
-  function ask(question: string) {
+  async function ask(question: string) {
     const q = question.trim();
     if (!q || !email || typing) return;
     setMsgs((m) => [...m, { role: "user", text: q }]);
     setInput("");
     setTyping(true);
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          question: q,
+          email,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Chat request failed");
+      }
+
+      const data = await res.json();
       setMsgs((m) => [
         ...m,
         {
           role: "bot",
-          text: `Thanks for asking. AshishGPT is still being trained, so I can't answer this live just yet. Ashish's team has your question and will reply personally at ${email}.`,
+          text: data.answer || "Thank you for asking. Ashish's advisory team will follow up on your portfolio inquiry.",
         },
       ]);
+    } catch {
+      setMsgs((m) => [
+        ...m,
+        {
+          role: "bot",
+          text: "I am temporarily experiencing higher than usual inquiry volume. You can reach Ashish directly on WhatsApp at +971 54 582 1600.",
+        },
+      ]);
+    } finally {
       setTyping(false);
-    }, 900);
+    }
   }
 
   const unlocked = !!email;
@@ -138,7 +163,26 @@ export default function AshishChat() {
             )}
             {msgs.map((m, i) => (
               <div key={i} className={`gpt__msg gpt__msg--${m.role}`}>
-                <span className="gpt__bubble">{m.text}</span>
+                <div className="gpt__bubble">
+                  {m.role === "bot" ? (
+                    <FormattedMessage content={m.text} />
+                  ) : (
+                    <span>{m.text}</span>
+                  )}
+                  {m.role === "bot" && (
+                    <div style={{ marginTop: "14px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                      <a
+                        href="https://wa.me/971545821600"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn--sm btn--gold"
+                        style={{ fontSize: "0.75rem", padding: "6px 14px", textDecoration: "none" }}
+                      >
+                        <span>Chat on WhatsApp</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
             {typing && (
