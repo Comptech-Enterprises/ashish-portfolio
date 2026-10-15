@@ -20,6 +20,9 @@ interface RawProperty {
   location_tree?: Array<{ name?: string }>;
   developer?: { name?: string };
   listed_date?: string;
+  url?: string;
+  share_url?: string;
+  link?: string;
 }
 
 const EMIRATES = new Set([
@@ -128,7 +131,7 @@ export async function GET(request: NextRequest) {
               community: p.location_tree?.[1]?.name || "",
               agentName: "Ashish Lalwani",
               brokerName: "Vibgyor Real Estate",
-              listingUrl: `#property-${p.property_id || p.id}`,
+              listingUrl: p.url || p.share_url || p.link || "",
               listedDate: p.listed_date || "",
               images: Array.isArray(p.images) ? p.images : [],
             };

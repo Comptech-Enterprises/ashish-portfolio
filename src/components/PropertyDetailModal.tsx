@@ -1,7 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { PropertyListing } from "@/app/api/properties/route";
+
+function formatPrice(price: number | string | undefined, currency = "AED"): string {
+  if (price === undefined || price === null) return `${currency} Price on Request`;
+  const num = typeof price === "number" ? price : Number(String(price).replace(/[^0-9.]/g, ""));
+  if (isNaN(num) || num <= 0) return `${currency} Price on Request`;
+  return `${currency} ${num.toLocaleString("en-US")}`;
+}
 
 export default function PropertyDetailModal({
   property,
@@ -19,6 +26,17 @@ export default function PropertyDetailModal({
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isMockDelivery, setIsMockDelivery] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
 
   if (!property) return null;
 
@@ -32,7 +50,7 @@ export default function PropertyDetailModal({
 
     // 1. Dispatch email in background via Brevo route
     try {
-      await fetch("/api/inquire", {
+      const res = await fetch("/api/inquire", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -43,6 +61,10 @@ export default function PropertyDetailModal({
           property,
         }),
       });
+      const data = await res.json().catch(() => null);
+      if (data?.mock) {
+        setIsMockDelivery(true);
+      }
     } catch (err) {
       console.warn("Could not send email notification:", err);
     }
@@ -50,7 +72,7 @@ export default function PropertyDetailModal({
     // 2. Build personalized WhatsApp link for immediate direct connection
     const inquiryText = `Hello Ashish, I am interested in this property:
 *${property.title}*
-Price: ${property.currency} ${property.price.toLocaleString()}
+Price: ${formatPrice(property.price, property.currency)}
 Location: ${property.community ? property.community + ", " : ""}${property.city}
 Reference: ${property.propertyId}
 
@@ -85,7 +107,7 @@ Note: ${formData.message || "Please provide more details."}`;
                 className="prop-modal-featured-img"
               />
               <span className="prop-modal-price-badge">
-                {property.currency} {property.price.toLocaleString()}
+                {formatPrice(property.price, property.currency)}
               </span>
             </div>
 
@@ -131,6 +153,32 @@ Note: ${formData.message || "Please provide more details."}`;
                 <p className="prop-desc-text">{property.description}</p>
               )}
             </div>
+
+            <div className="prop-modal-actions" style={{ marginTop: "16px" }}>
+              {property.listingUrl && property.listingUrl.startsWith("http") ? (
+                <a
+                  href={property.listingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--outline"
+                  style={{ display: "inline-flex", width: "100%", justifyContent: "center", textDecoration: "none" }}
+                >
+                  <span>View Original Listing ↗</span>
+                </a>
+              ) : (
+                <a
+                  href={`https://wa.me/971545821600?text=${encodeURIComponent(
+                    `Hello Ashish, please send me the official brochure and payment plan for ${property.title} (Ref: ${property.propertyId}) in ${property.community || property.city}.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--outline"
+                  style={{ display: "inline-flex", width: "100%", justifyContent: "center", textDecoration: "none" }}
+                >
+                  <span>Request Brochure on WhatsApp ↗</span>
+                </a>
+              )}
+            </div>
           </div>
 
           {/* Right Column: Ashish Lalwani Inquire Lead Form */}
@@ -151,13 +199,29 @@ Note: ${formData.message || "Please provide more details."}`;
                 <div className="success-icon">✓</div>
                 <h3>Inquiry Initiated</h3>
                 <p>
-                  Thank you, <b>{formData.name}</b>. Your inquiry for <b>{property.title}</b> is being forwarded directly to Ashish via WhatsApp & email.
+                  Thank you, <b>{formData.name}</b>. Your inquiry for <b>{property.title}</b> is being forwarded directly to Ashish.
                 </p>
+                {isMockDelivery && (
+                  <p style={{ fontSize: "0.85rem", color: "#C9A96E", marginTop: "8px" }}>
+                    Note: Staging mode active. Please confirm your inquiry directly with Ashish on WhatsApp below.
+                  </p>
+                )}
+                <a
+                  href={`https://wa.me/971545821600?text=${encodeURIComponent(
+                    `Hello Ashish, I just submitted an inquiry for ${property.title} (Ref: ${property.propertyId}). My name is ${formData.name}.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn--gold"
+                  style={{ marginTop: "14px", width: "100%", display: "inline-flex", justifyContent: "center", textDecoration: "none" }}
+                >
+                  <span>Open WhatsApp Chat Now</span>
+                </a>
                 <button
                   type="button"
                   className="btn btn--sm"
                   onClick={onClose}
-                  style={{ marginTop: "16px", width: "100%" }}
+                  style={{ marginTop: "10px", width: "100%" }}
                 >
                   <span>Close Window</span>
                 </button>

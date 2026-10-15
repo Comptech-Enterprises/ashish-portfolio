@@ -86,6 +86,10 @@ export default function AshishChat() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           question: q,
+          history: msgs.slice(-6).map((m) => ({
+            role: m.role === "user" ? "user" : "model",
+            text: m.text,
+          })),
           email,
         }),
       });
@@ -94,14 +98,36 @@ export default function AshishChat() {
         throw new Error("Chat request failed");
       }
 
-      const data = await res.json();
-      setMsgs((m) => [
-        ...m,
-        {
-          role: "bot",
-          text: data.answer || "Thank you for asking. Ashish's advisory team will follow up on your portfolio inquiry.",
-        },
-      ]);
+      if (!res.body) {
+        const text = await res.text();
+        setMsgs((m) => [
+          ...m,
+          {
+            role: "bot",
+            text: text || "Thank you for asking. Ashish's advisory team will follow up on your portfolio inquiry.",
+          },
+        ]);
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = "";
+
+      // Append active bot message right away so user sees it stream in real time
+      setMsgs((m) => [...m, { role: "bot", text: "" }]);
+      setTyping(false);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        accumulated += decoder.decode(value, { stream: true });
+        setMsgs((m) => {
+          const updated = [...m];
+          updated[updated.length - 1] = { role: "bot", text: accumulated };
+          return updated;
+        });
+      }
     } catch {
       setMsgs((m) => [
         ...m,
@@ -157,7 +183,14 @@ export default function AshishChat() {
             {msgs.length === 0 && (
               <div className="gpt__chips">
                 {SUGGESTIONS.map((s) => (
-                  <button key={s} type="button" onClick={() => ask(s)}>{s}</button>
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => ask(s)}
+                    aria-label={`Ask suggested inquiry: ${s}`}
+                  >
+                    {s}
+                  </button>
                 ))}
               </div>
             )}

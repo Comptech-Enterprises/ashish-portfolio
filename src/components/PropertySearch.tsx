@@ -13,8 +13,11 @@ const EMIRATES = [
 
 const BEDROOM_OPTIONS = [0, 1, 2, 3, 4, 5];
 
-function formatPrice(price: number, currency: string) {
-  return `${currency} ${price.toLocaleString()}`;
+function formatPrice(price: number | string | undefined, currency = "AED") {
+  if (price === undefined || price === null) return `${currency} Price on Request`;
+  const num = typeof price === "number" ? price : Number(String(price).replace(/[^0-9.]/g, ""));
+  if (isNaN(num) || num <= 0) return `${currency} Price on Request`;
+  return `${currency} ${num.toLocaleString("en-US")}`;
 }
 
 const MODE = "forSale";

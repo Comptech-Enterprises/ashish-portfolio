@@ -32,12 +32,40 @@ STRICT GUARDRAILS & FORMATTING RULES:
    - Conclude naturally by inviting the user to discuss custom requirements directly with Ashish Lalwani on WhatsApp (+971 54 582 1600).
 `;
 
+function sanitizeGeminiHistory(rawHistory: any[]): Array<{ role: "user" | "model"; parts: [{ text: string }] }> {
+  if (!Array.isArray(rawHistory)) return [];
+
+  const turns: Array<{ role: "user" | "model"; parts: [{ text: string }] }> = [];
+  for (const item of rawHistory) {
+    const text = String(item.text || item.content || "").trim();
+    if (!text) continue;
+    const role: "user" | "model" = item.role === "bot" || item.role === "model" ? "model" : "user";
+    if (turns.length > 0 && turns[turns.length - 1].role === role) {
+      turns[turns.length - 1].parts[0].text += `\n\n${text}`;
+    } else {
+      turns.push({ role, parts: [{ text }] });
+    }
+  }
+
+  // Gemini history must start with 'user'
+  while (turns.length > 0 && turns[0].role !== "user") {
+    turns.shift();
+  }
+
+  // History preceding the new user prompt must end with 'model'
+  while (turns.length > 0 && turns[turns.length - 1].role !== "model") {
+    turns.pop();
+  }
+
+  return turns;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { question, history, email } = await req.json();
 
     if (!question || typeof question !== "string") {
-      return NextResponse.json({ error: "Missing or invalid question" }, { status: 400 });
+      return new Response("Missing or invalid question", { status: 400 });
     }
 
     const cleanQuestion = question.trim();
@@ -49,10 +77,12 @@ export async function POST(req: NextRequest) {
       lowerQ.includes("system prompt") ||
       lowerQ.includes("developer mode")
     ) {
-      return NextResponse.json({
-        answer:
-          "I am designed solely to assist with Dubai real estate transactions and market advisory. How can I help you regarding your Dubai property goals?",
-      });
+      return new Response(
+        "I am designed solely to assist with Dubai real estate transactions and market advisory. How can I help you regarding your Dubai property goals?",
+        {
+          headers: { "Content-Type": "text/plain; charset=utf-8" },
+        }
+      );
     }
 
     // 1. Parse Intent & Extract Numerical Filters (Bedrooms, Budget, Community)
@@ -102,41 +132,55 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 6. Gemini LLM Generation (if key is present)
+    // 6. Gemini LLM Streaming Generation (if key is present)
     const geminiApiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
 
     if (geminiApiKey) {
       try {
         const ai = new GoogleGenAI({ apiKey: geminiApiKey });
+        const formattedHistory = sanitizeGeminiHistory(history);
 
-        const promptText = `${SYSTEM_GUARDRAIL_PROMPT}
-
-${contextBlock}
-
-USER INQUIRY:
-"${cleanQuestion}"
-
-Provide a structured, helpful, and grounded answer for the user based strictly on the verified data above:`;
-
-        const response = await ai.models.generateContent({
+        const chat = ai.chats.create({
           model: "gemini-2.5-flash",
-          contents: promptText,
+          config: {
+            systemInstruction: `${SYSTEM_GUARDRAIL_PROMPT}\n\n${contextBlock}`,
+          },
+          history: formattedHistory,
         });
 
-        const reply = response.text || "";
-        if (reply.trim()) {
-          return NextResponse.json({
-            answer: reply.trim(),
-            metrics: matchingMetrics.slice(0, 3),
-            properties: matchedProperties.slice(0, 3),
-          });
-        }
+        const responseStream = await chat.sendMessageStream({
+          message: cleanQuestion,
+        });
+
+        const encoder = new TextEncoder();
+        const stream = new ReadableStream({
+          async start(controller) {
+            try {
+              for await (const chunk of responseStream) {
+                if (chunk.text) {
+                  controller.enqueue(encoder.encode(chunk.text));
+                }
+              }
+              controller.close();
+            } catch (streamError) {
+              console.error("Stream generation error:", streamError);
+              controller.error(streamError);
+            }
+          },
+        });
+
+        return new Response(stream, {
+          headers: {
+            "Content-Type": "text/plain; charset=utf-8",
+            "Cache-Control": "no-cache, no-transform",
+          },
+        });
       } catch (geminiError) {
         console.warn("Gemini generation failed, falling back to deterministic answer:", geminiError);
       }
     }
 
-    // 7. Dynamic Deterministic RAG Response (when API key is not yet set)
+    // 7. Dynamic Deterministic RAG Response (when API key is not yet set or fails)
     let dynamicAnswer = "";
 
     if (parsed.minBedrooms !== undefined && matchedProperties.length > 0) {
@@ -200,16 +244,15 @@ Dubai levies 0% property tax, 0% capital gains tax, and 0% rental income tax.`;
 What specific community, bedroom count, or budget are you targeting?`;
     }
 
-    return NextResponse.json({
-      answer: dynamicAnswer,
-      metrics: matchingMetrics.slice(0, 3),
-      properties: matchedProperties.slice(0, 3),
+    return new Response(dynamicAnswer, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache",
+      },
     });
   } catch (err: any) {
     console.error("Chat API error:", err);
-    return NextResponse.json(
-      { error: "Internal server error processing inquiry" },
-      { status: 500 }
-    );
+    return new Response("Internal server error processing inquiry", { status: 500 });
   }
 }
+
