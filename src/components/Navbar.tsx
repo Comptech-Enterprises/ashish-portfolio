@@ -19,12 +19,12 @@ export default function Navbar() {
   return (
     <>
       <header className="nav" id="nav">
-        <a href="#top" className="nav__logo" data-magnet aria-label="Proud BNI Member">
+        <a href="#top" className="nav__logo" aria-label="Proud BNI Member">
           <Image
             src="/assets/bni.png"
             alt="Proud BNI Member"
-            width={76}
-            height={40}
+            width={110}
+            height={58}
             priority
             className="nav__logo-img"
           />
