@@ -23,8 +23,8 @@ export default function Navbar() {
           <Image
             src="/assets/bni.png"
             alt="Proud BNI Member"
-            width={110}
-            height={58}
+            width={183}
+            height={96}
             priority
             className="nav__logo-img"
           />
