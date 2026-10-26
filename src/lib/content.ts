@@ -78,7 +78,7 @@ export const AREAS = [
 
 /** Video placeholders. Set src (mp4 / embed url) to activate a slot. */
 export const VIDEOS = [
-  { title: "Video one", src: "" },
-  { title: "Video two", src: "" },
-  { title: "Video three", src: "" },
+  { title: "Al Barari", src: "https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/al-barari.mp4" },
+  { title: "Al Maktoum Airport Expansion", src: "https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/al-maktoum-airport.mp4" },
+  { title: "Buying Off-Plan in Abu Dhabi", src: "https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/buying-offplan-abudhabi.mp4" },
 ];
