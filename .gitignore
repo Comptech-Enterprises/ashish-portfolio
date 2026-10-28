@@ -8,3 +8,5 @@ next-env.d.ts
 .env.*
 cloudflared.exe
 *.log
+.claude/
+.wrangler/
