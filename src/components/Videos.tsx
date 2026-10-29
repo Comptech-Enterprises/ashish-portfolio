@@ -158,7 +158,7 @@ export default function Videos() {
                 delay={i * 100}
                 isUnmuted={activeAudio === i}
                 onUnmute={() => handleUnmute(i)}
-                onClick={() => setLightbox(i)}
+                onClick={() => { setActiveAudio(null); setLightbox(i); }}
               />
             ) : (
               <Reveal key={v.title} delay={i * 100} className="video-card">
