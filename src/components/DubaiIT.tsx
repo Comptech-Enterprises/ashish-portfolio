@@ -70,12 +70,6 @@ export default function DubaiIT() {
           </div>
         </div>
 
-        <Reveal variant="scale" delay={450}>
-          <blockquote className="dubai-it__quote">
-            <span>Because in Dubai,</span>
-            <b>delivery is the <em>real brochure.</em></b>
-          </blockquote>
-        </Reveal>
       </div>
     </section>
   );
