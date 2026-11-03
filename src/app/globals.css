@@ -419,12 +419,15 @@ html[data-ready] .loader{pointer-events:none}
 
 /* ---------- Dubai IT ---------- */
 .dubai-it{background:var(--surface);color:var(--text);overflow:hidden}
-.dubai-it__inner{max-width:880px}
+.dubai-it__inner{max-width:1200px}
 .dubai-it__header{text-align:center;margin-bottom:48px;display:flex;flex-direction:column;align-items:center}
 .dubai-it__title{font-family:var(--serif);font-weight:800;font-size:clamp(2.5rem,7.5vw,4.5rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase;color:var(--text);margin:0 auto 16px;text-align:center}
 .dubai-it__sub{font-family:var(--serif);font-weight:600;font-size:clamp(1.75rem,4.5vw,2.8rem);line-height:1.15;color:var(--text);text-align:center;margin:0 auto 16px}
 .dubai-it__sub em{font-style:italic;color:var(--gold-ink)}
 .dubai-it__kicker{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,2.2vw,1.5rem);color:var(--gold-ink);margin:0 auto;text-align:center}
+.dubai-it__split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.dubai-it__compare{position:sticky;top:100px}
+@media(max-width:900px){.dubai-it__split{grid-template-columns:1fr;gap:40px}.dubai-it__compare{position:static}}
 .dubai-it__story p{font-size:1.08rem;line-height:1.75;color:rgba(0,0,0,.75);margin-bottom:20px;max-width:64ch}
 .dubai-it__story .lead{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:600;color:var(--text);margin-bottom:14px}
 .dubai-it__story strong{color:var(--text)}
@@ -440,6 +443,18 @@ html[data-ready] .loader{pointer-events:none}
 .dubai-it__quote span{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:700}
 .dubai-it__quote b{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.1}
 .dubai-it__quote em{color:var(--gold)}
+
+/* ---------- Image Compare Slider ---------- */
+.img-compare{position:relative;width:100%;aspect-ratio:1;border-radius:20px;overflow:hidden;cursor:col-resize;user-select:none;-webkit-user-select:none;box-shadow:0 12px 40px rgba(0,0,0,.15)}
+.img-compare__after{display:block;width:100%;height:100%;object-fit:cover}
+.img-compare__before{position:absolute;inset:0;overflow:hidden}
+.img-compare__before img{display:block;width:100%;height:100%;object-fit:cover}
+.img-compare__slider{position:absolute;top:0;bottom:0;width:0;transform:translateX(-50%);z-index:2;pointer-events:none}
+.img-compare__line{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:#fff;box-shadow:0 0 8px rgba(0,0,0,.4)}
+.img-compare__handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 2px 12px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#333;pointer-events:auto}
+.img-compare__label{position:absolute;bottom:16px;padding:6px 14px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(8px);z-index:3}
+.img-compare__label--before{left:16px;background:rgba(0,0,0,.6);color:#fff}
+.img-compare__label--after{right:16px;background:rgba(255,255,255,.85);color:#000}
 
 /* ---------- AshishGPT chat ---------- */
 .prop-browse-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;margin:60px 0 18px}

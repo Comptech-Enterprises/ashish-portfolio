@@ -33,13 +33,7 @@ export default function Footer() {
           <div className="footer__col">
             <h4>Contact Details</h4>
             <div className="footer__contact-list">
-              <div className="footer__contact-item">
-                <span className="footer__contact-label">Head Office Phone</span>
-                <a href="tel:+97145518469" className="footer__contact-val">
-                  +971 4 551 8469
-                </a>
-              </div>
-              <div className="footer__contact-item">
+<div className="footer__contact-item">
                 <span className="footer__contact-label">Email Inquiries</span>
                 <a
                   href="mailto:ashish@vibgyorrealestate.com"
