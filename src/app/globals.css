@@ -242,6 +242,7 @@ html[data-ready] .loader{pointer-events:none}
 .footer__cta-btn--gold:hover{background:#ffffff;color:#000000}
 .footer__cta-btn--outline{border:1px solid rgba(183,155,111,.4);color:#ffffff}
 .footer__cta-btn--outline:hover{border-color:var(--gold);color:var(--gold)}
+.footer__cta-btn--icon{padding:12px;border-radius:50%;width:52px;height:52px;display:inline-grid;place-items:center}
 .footer__col h4{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--gold);margin-bottom:22px;letter-spacing:-.01em}
 .footer__contact-list{display:flex;flex-direction:column;gap:16px}
 .footer__contact-item{display:flex;flex-direction:column;gap:4px}
