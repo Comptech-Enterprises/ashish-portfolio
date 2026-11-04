@@ -39,7 +39,7 @@ No animation library is used. Every effect is hand-written with `IntersectionObs
 Requires Node 20 or newer (developed on Node 26).
 
 ```bash
-git clone git@github.com-work:Comptech-Enterprises/ashish-portfolio.git
+git clone https://github.com/Comptech-Enterprises/ashish-portfolio.git
 cd ashish-portfolio
 npm install
 npm run dev
