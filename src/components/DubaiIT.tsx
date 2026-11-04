@@ -50,10 +50,15 @@ export default function DubaiIT() {
               <p className="dubai-it__strong">You&apos;re investing in the city&apos;s future.</p>
             </Reveal>
             <Reveal delay={400}>
-              <p>And for me, Dubai IT is simple:</p>
               <div className="dubai-it__motto">
-                <span>Say what you do.</span>
-                <span>Do what you say.</span>
+                <span>I just don&apos;t know Dubai.</span>
+                <span>I&apos;ve watched it become Dubai.</span>
+              </div>
+              <div className="dubai-it__motto dubai-it__motto--highlight">
+                <span>You dream it.</span>
+                <span>We find it.</span>
+                <span>We fund it.</span>
+                <span>We <em>dubai</em> it.</span>
               </div>
             </Reveal>
           </div>
