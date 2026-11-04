@@ -47,10 +47,15 @@ export default function About() {
             </ul>
           </Reveal>
           <Reveal delay={250}>
-            <div className="formula">
-              <p className="eyebrow">My approach</p>
-              <div className="formula__steps"><span>Right Property</span><i>→</i><span>Right Reason</span><i>→</i><span>Right Time</span></div>
-              <p>If it doesn&apos;t pass all three, it doesn&apos;t go to my clients.</p>
+            <div className="approach-video">
+              <video
+                src="https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/approach.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
             </div>
           </Reveal>
           <Reveal delay={300}>
