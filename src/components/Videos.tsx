@@ -32,9 +32,11 @@ function VideoCard({
     }
   }
 
-  if (ref.current && !isUnmuted) {
-    ref.current.muted = true;
-  }
+  useEffect(() => {
+    if (ref.current && !isUnmuted) {
+      ref.current.muted = true;
+    }
+  }, [isUnmuted]);
 
   return (
     <Reveal delay={delay} className="video-card">

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Reveal from "./Reveal";
+import ApproachVideo from "./ApproachVideo";
 
 export default function About() {
   const hasPhoto = fs.existsSync(path.join(process.cwd(), "public/assets/ashish.webp"));
@@ -47,16 +48,7 @@ export default function About() {
             </ul>
           </Reveal>
           <Reveal delay={250}>
-            <div className="approach-video">
-              <video
-                src="https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/approach.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-              />
-            </div>
+            <ApproachVideo src="https://pub-c1e7d07d1d1e4bafa7718ed601c0bf59.r2.dev/videos/approach.mp4" />
           </Reveal>
           <Reveal delay={300}>
             <p>One moment early in my career shaped everything: I waited outside a site office for hours for a client who never came. That day I realised two truths: no one owes you their trust, and once someone gives it to you, you protect it with everything you have. That&apos;s the standard I hold myself to.</p>
