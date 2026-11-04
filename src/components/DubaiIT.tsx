@@ -58,7 +58,7 @@ export default function DubaiIT() {
                 <span>You dream it.</span>
                 <span>We find it.</span>
                 <span>We fund it.</span>
-                <span>We <em>dubai</em> it.</span>
+                <span>We <em>Dubai-it.</em></span>
               </div>
             </Reveal>
           </div>
