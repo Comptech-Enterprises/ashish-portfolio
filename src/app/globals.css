@@ -264,7 +264,8 @@ html[data-ready] .loader{pointer-events:none}
 
 /* property search */
 .properties{background:var(--bg-2)}
-.prop-lead{max-width:640px}
+@media(min-width:901px){.properties .wrap{text-align:center}.properties .wrap .gpt{margin-inline:auto}}
+.prop-lead{max-width:640px;margin-inline:auto}
 .prop-search{margin-top:50px}
 .prop-search__form{display:flex;flex-direction:column;gap:24px;padding:32px;border:1px solid rgba(183,155,111,.25);border-radius:24px;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.04);max-width:100%;box-sizing:border-box}
 .prop-search__fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
