@@ -49,18 +49,6 @@ export default function DubaiIT() {
               <p>Because when you&apos;re investing in Dubai, you&apos;re not just buying a property.</p>
               <p className="dubai-it__strong">You&apos;re investing in the city&apos;s future.</p>
             </Reveal>
-            <Reveal delay={400}>
-              <div className="dubai-it__motto">
-                <span>I just don&apos;t know Dubai.</span>
-                <span>I&apos;ve watched it become Dubai.</span>
-              </div>
-              <div className="dubai-it__motto dubai-it__motto--highlight">
-                <span>You dream it.</span>
-                <span>We find it.</span>
-                <span>We fund it.</span>
-                <span>We <em>Dubai-it.</em></span>
-              </div>
-            </Reveal>
           </div>
 
           <div className="dubai-it__compare">
@@ -74,6 +62,19 @@ export default function DubaiIT() {
             </Reveal>
           </div>
         </div>
+
+        <Reveal delay={400}>
+          <div className="dubai-it__motto">
+            <span>I just don&apos;t know Dubai.</span>
+            <span>I&apos;ve watched it become Dubai.</span>
+          </div>
+          <div className="dubai-it__motto dubai-it__motto--highlight">
+            <span>You dream it.</span>
+            <span>We find it.</span>
+            <span>We fund it.</span>
+            <span>We <em>Dubai-it.</em></span>
+          </div>
+        </Reveal>
 
       </div>
     </section>

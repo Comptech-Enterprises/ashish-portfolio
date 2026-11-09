@@ -436,6 +436,7 @@ html[data-ready] .loader{pointer-events:none}
 .dubai-it__checks i{font-style:normal;color:var(--gold);font-size:1rem}
 .dubai-it__story .dubai-it__strong{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:var(--gold-ink);margin-bottom:34px}
 .dubai-it__motto{display:grid;gap:2px;margin:6px 0 10px}
+@media(min-width:901px){.dubai-it__motto{text-align:center;justify-items:center;margin-top:48px}}
 .dubai-it__motto span{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3.6rem);line-height:1.1}
 .dubai-it__motto span:last-child{font-style:italic;color:var(--gold-ink)}
 .dubai-it__motto--highlight{margin-top:24px;gap:4px}.dubai-it__motto--highlight span{font-size:clamp(1.6rem,4vw,2.8rem)}.dubai-it__motto--highlight span:last-child{font-weight:700}
