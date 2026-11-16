@@ -118,7 +118,7 @@ export default function Services() {
                   aria-selected={i === activeIndex}
                   className={`services-carousel__tab ${i === activeIndex ? "is-active" : ""}`}
                   onClick={() => setActiveIndex(i)}
-                  aria-label={`Go to ${s.title}`}
+                  aria-label={`0${i + 1} - ${s.title}`}
                 >
                   <span className="services-carousel__tab-num">0{i + 1}</span>
                   <span className="services-carousel__tab-label">{s.title}</span>

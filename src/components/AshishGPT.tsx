@@ -1,7 +1,7 @@
 /** Floating AshishGPT launcher (bottom-right). Takes visitors to the "Ask AshishGPT anything" section. */
 export default function AshishGPT() {
   return (
-    <a href="#search" className="gptfab" aria-label="Ask AshishGPT anything">
+    <a href="#search" className="gptfab" aria-label="Ask me anything - AshishGPT">
       <span className="gptfab__cloud" aria-hidden="true">Ask me anything</span>
       <span className="gptfab__btn">
         <svg className="gptfab__icon" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">

@@ -112,7 +112,6 @@ export default function AshishChat() {
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
-      let accumulated = "";
 
       // Append active bot message right away so user sees it stream in real time
       setMsgs((m) => [...m, { role: "bot", text: "" }]);
@@ -121,10 +120,12 @@ export default function AshishChat() {
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
-        accumulated += decoder.decode(value, { stream: true });
+        const chunk = decoder.decode(value, { stream: true });
         setMsgs((m) => {
+          if (m.length === 0) return [{ role: "bot", text: chunk }];
           const updated = [...m];
-          updated[updated.length - 1] = { role: "bot", text: accumulated };
+          const last = updated[updated.length - 1];
+          updated[updated.length - 1] = { role: "bot", text: (last ? last.text : "") + chunk };
           return updated;
         });
       }

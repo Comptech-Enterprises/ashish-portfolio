@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section className="about section" id="about">
       <div className="wrap about__grid">
-        <Reveal variant="mask" className="about__portrait">
+        <div className="about__portrait">
           <div className="portrait">
             <div className="portrait__fallback"><span>AL</span></div>
             {hasPhoto && (
@@ -18,7 +18,8 @@ export default function About() {
                 alt="Ashish Lalwani"
                 fill
                 priority
-                sizes="(max-width:860px) 100vw, 45vw"
+                fetchPriority="high"
+                sizes="(max-width:860px) 100vw, 420px"
                 style={{ objectFit: "cover", zIndex: 2 }}
               />
             )}
@@ -31,7 +32,7 @@ export default function About() {
             </svg>
             <b>✦</b>
           </div>
-        </Reveal>
+        </div>
         <div className="about__text">
           <Reveal><p className="eyebrow">About Ashish</p></Reveal>
           <Reveal delay={100}>

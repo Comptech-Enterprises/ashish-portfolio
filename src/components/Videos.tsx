@@ -20,6 +20,36 @@ function VideoCard({
   onClick: () => void;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        } else {
+          setInView(false);
+          if (ref.current) ref.current.pause();
+        }
+      },
+      { rootMargin: "200px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (inView) {
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [inView]);
 
   function toggleMute(e: React.MouseEvent) {
     e.stopPropagation();
@@ -40,15 +70,14 @@ function VideoCard({
 
   return (
     <Reveal delay={delay} className="video-card">
-      <div className="video-card__frame" onClick={onClick} role="button" tabIndex={0}>
+      <div ref={cardRef} className="video-card__frame" onClick={onClick} role="button" tabIndex={0}>
         <video
           ref={ref}
           src={src}
           muted
-          autoPlay
           loop
           playsInline
-          preload="metadata"
+          preload="none"
         />
         <button
           className="video-card__mute"

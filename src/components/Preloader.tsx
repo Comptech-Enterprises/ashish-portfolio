@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 
-const DURATION = 2200;
+const DURATION = 600;
 
 export default function Preloader() {
   useEffect(() => {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const total = reduce ? 200 : DURATION;
+    const total = reduce ? 100 : DURATION;
     const timer = setTimeout(() => {
       document.documentElement.setAttribute("data-ready", "");
     }, total);

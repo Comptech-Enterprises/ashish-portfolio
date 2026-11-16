@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import {
   parseQueryIntent,
   queryCommunityMetrics,
@@ -32,12 +32,18 @@ STRICT GUARDRAILS & FORMATTING RULES:
    - Conclude naturally by inviting the user to discuss custom requirements directly with Ashish Lalwani on WhatsApp (+971 54 582 1600).
 `;
 
-function sanitizeGeminiHistory(rawHistory: any[]): Array<{ role: "user" | "model"; parts: [{ text: string }] }> {
+interface RawHistoryItem {
+  text?: string;
+  content?: string;
+  role?: string;
+}
+
+function sanitizeGeminiHistory(rawHistory: unknown): Array<{ role: "user" | "model"; parts: [{ text: string }] }> {
   if (!Array.isArray(rawHistory)) return [];
 
   const turns: Array<{ role: "user" | "model"; parts: [{ text: string }] }> = [];
-  for (const item of rawHistory) {
-    const text = String(item.text || item.content || "").trim();
+  for (const item of rawHistory as RawHistoryItem[]) {
+    const text = String(item?.text || item?.content || "").trim();
     if (!text) continue;
     const role: "user" | "model" = item.role === "bot" || item.role === "model" ? "model" : "user";
     if (turns.length > 0 && turns[turns.length - 1].role === role) {
@@ -62,7 +68,7 @@ function sanitizeGeminiHistory(rawHistory: any[]): Array<{ role: "user" | "model
 
 export async function POST(req: NextRequest) {
   try {
-    const { question, history, email } = await req.json();
+    const { question, history } = await req.json();
 
     if (!question || typeof question !== "string") {
       return new Response("Missing or invalid question", { status: 400 });
@@ -250,7 +256,7 @@ What specific community, bedroom count, or budget are you targeting?`;
         "Cache-Control": "no-cache",
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Chat API error:", err);
     return new Response("Internal server error processing inquiry", { status: 500 });
   }

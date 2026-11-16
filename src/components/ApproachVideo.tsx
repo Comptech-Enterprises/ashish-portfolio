@@ -1,10 +1,42 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ApproachVideo({ src }: { src: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+        } else {
+          setInView(false);
+          if (videoRef.current) {
+            videoRef.current.pause();
+          }
+        }
+      },
+      { rootMargin: "150px 0px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (inView) {
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [inView]);
 
   function toggleMute(e: React.MouseEvent) {
     e.stopPropagation();
@@ -20,21 +52,20 @@ export default function ApproachVideo({ src }: { src: string }) {
   }
 
   return (
-    <div className="approach-video">
+    <div ref={containerRef} className="approach-video">
       <video
         ref={videoRef}
         src={src}
-        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
       />
       <button
         type="button"
         className="approach-video__mute"
         onClick={toggleMute}
-        aria-label={isMuted ? "Unmute video" : "Mute video"}
+        aria-label={isMuted ? "Unmute approach video" : "Mute approach video"}
         title={isMuted ? "Click to unmute sound" : "Click to mute"}
       >
         {isMuted ? (
