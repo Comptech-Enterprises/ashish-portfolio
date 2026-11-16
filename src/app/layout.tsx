@@ -12,7 +12,6 @@ const cormorant = Cormorant_Garamond({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "800"],
   display: "swap",
 });
 
