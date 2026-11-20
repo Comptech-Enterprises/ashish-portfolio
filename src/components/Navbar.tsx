@@ -36,12 +36,14 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
-        <a href="#contact" className="btn btn--sm" data-magnet>
-          <span>Let’s talk</span>
-        </a>
-        <a href="/" className="btn btn--sm btn--outline" data-magnet>
-          <span>Join Us</span>
-        </a>
+        <div className="nav__cta">
+          <a href="#contact" className="btn btn--sm" data-magnet>
+            <span>Let’s talk</span>
+          </a>
+          <a href="/" className="btn btn--sm btn--outline" data-magnet>
+            <span>Join Us</span>
+          </a>
+        </div>
         <button
           className="nav__burger"
           aria-label="Menu"

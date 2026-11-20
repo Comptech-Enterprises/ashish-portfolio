@@ -70,7 +70,8 @@ html[data-ready] .loader{pointer-events:none}
 .menu-open .menu{clip-path:circle(150% at 92% 6%);visibility:visible;pointer-events:auto}
 .menu a{font-family:var(--serif);font-size:clamp(2.4rem,9vw,4rem);color:var(--text);transition:color .2s ease}
 .menu a:hover{color:var(--gold-ink)}
-@media(max-width:860px){.nav__links,.nav .btn--sm{display:none}.nav__burger{display:block;z-index:201}}
+.nav__cta{display:flex;gap:10px;margin-left:auto}
+@media(max-width:860px){.nav__links,.nav__cta{display:none}.nav__burger{display:block;z-index:201}}
 @media(min-width:861px){.menu{display:none!important}}
 
 /* buttons */
