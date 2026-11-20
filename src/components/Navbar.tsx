@@ -39,6 +39,9 @@ export default function Navbar() {
         <a href="#contact" className="btn btn--sm" data-magnet>
           <span>Let’s talk</span>
         </a>
+        <a href="/" className="btn btn--sm btn--outline" data-magnet>
+          <span>Join Us</span>
+        </a>
         <button
           className="nav__burger"
           aria-label="Menu"
