@@ -84,7 +84,7 @@ html[data-ready] .loader{pointer-events:none}
 .btn--ghost::before{background:var(--gold)}
 .btn--ghost:hover{color:#000;border-color:var(--gold)}
 .btn--sm{padding:11px 22px;font-size:.72rem}
-.btn--outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}.btn--outline:hover{background:var(--gold);color:#000}
+.btn--outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}.btn--outline::before{display:none}.btn--outline:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
 .btn--xl{padding:26px 52px;font-size:1rem}
 .btn--gold{background:var(--gold);color:#000}
 
