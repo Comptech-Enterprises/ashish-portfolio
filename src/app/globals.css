@@ -71,6 +71,7 @@ html[data-ready] .loader{pointer-events:none}
 .menu a{font-family:var(--serif);font-size:clamp(2.4rem,9vw,4rem);color:var(--text);transition:color .2s ease}
 .menu a:hover{color:var(--gold-ink)}
 .nav__cta{display:flex;gap:10px;margin-left:auto}
+.nav__cta .btn::before{display:none}.nav__cta .btn:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
 @media(max-width:860px){.nav__links,.nav__cta{display:none}.nav__burger{display:block;z-index:201}}
 @media(min-width:861px){.menu{display:none!important}}
 
