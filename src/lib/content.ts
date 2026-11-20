@@ -13,6 +13,7 @@ export const NAV = [
   { href: "#areas", label: "Areas" },
   { href: "#dubai-it", label: "Dubai IT" },
   { href: "#community", label: "Community" },
+  { href: "/", label: "Blog" },
 ];
 
 export const COMMUNITIES = [
