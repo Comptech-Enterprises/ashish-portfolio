@@ -1,17 +1,19 @@
+import dynamic from "next/dynamic";
 import Preloader from "@/components/Preloader";
-import ScrollFx from "@/components/ScrollFx";
-import PointerFx from "@/components/PointerFx";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
-import Videos from "@/components/Videos";
-import Services from "@/components/Services";
-import Areas from "@/components/Areas";
-import Properties from "@/components/Properties";
-import DubaiIT from "@/components/DubaiIT";
-import Community from "@/components/Community";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import AshishGPT from "@/components/AshishGPT";
+
+const ScrollFx = dynamic(() => import("@/components/ScrollFx"), { ssr: false });
+const PointerFx = dynamic(() => import("@/components/PointerFx"), { ssr: false });
+const Videos = dynamic(() => import("@/components/Videos"));
+const Services = dynamic(() => import("@/components/Services"));
+const Areas = dynamic(() => import("@/components/Areas"));
+const Properties = dynamic(() => import("@/components/Properties"));
+const DubaiIT = dynamic(() => import("@/components/DubaiIT"));
+const Community = dynamic(() => import("@/components/Community"));
+const Contact = dynamic(() => import("@/components/Contact"));
+const Footer = dynamic(() => import("@/components/Footer"));
+const AshishGPT = dynamic(() => import("@/components/AshishGPT"), { ssr: false });
 
 export default function Home() {
   return (
