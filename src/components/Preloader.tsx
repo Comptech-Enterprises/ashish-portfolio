@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const DURATION = 300;
+const DURATION = 100;
 
 export default function Preloader() {
   useEffect(() => {
