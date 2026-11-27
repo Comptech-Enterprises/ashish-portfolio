@@ -206,7 +206,7 @@ export default function AshishChat() {
                   {m.role === "bot" && (
                     <div style={{ marginTop: "14px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
                       <a
-                        href="https://wa.me/971545821600"
+                        href="https://wa.me/971504361285"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn--sm btn--gold"

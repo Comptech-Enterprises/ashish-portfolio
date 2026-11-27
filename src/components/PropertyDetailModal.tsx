@@ -82,7 +82,7 @@ Phone: ${formData.phone}
 Email: ${formData.email}
 Note: ${formData.message || "Please provide more details."}`;
 
-    const whatsappUrl = `https://wa.me/971545821600?text=${encodeURIComponent(inquiryText)}`;
+    const whatsappUrl = `https://wa.me/971504361285?text=${encodeURIComponent(inquiryText)}`;
 
     setSubmitting(false);
     setSubmitted(true);
@@ -167,7 +167,7 @@ Note: ${formData.message || "Please provide more details."}`;
                 </a>
               ) : (
                 <a
-                  href={`https://wa.me/971545821600?text=${encodeURIComponent(
+                  href={`https://wa.me/971504361285?text=${encodeURIComponent(
                     `Hello Ashish, please send me the official brochure and payment plan for ${property.title} (Ref: ${property.propertyId}) in ${property.community || property.city}.`
                   )}`}
                   target="_blank"
@@ -207,7 +207,7 @@ Note: ${formData.message || "Please provide more details."}`;
                   </p>
                 )}
                 <a
-                  href={`https://wa.me/971545821600?text=${encodeURIComponent(
+                  href={`https://wa.me/971504361285?text=${encodeURIComponent(
                     `Hello Ashish, I just submitted an inquiry for ${property.title} (Ref: ${property.propertyId}). My name is ${formData.name}.`
                   )}`}
                   target="_blank"

@@ -49,7 +49,7 @@ const jsonLd = {
   },
   "url": "https://ashishlalwani.com",
   "image": "https://ashishlalwani.com/assets/ashish.webp",
-  "telephone": "+971545821600",
+  "telephone": "+971504361285",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Dubai",

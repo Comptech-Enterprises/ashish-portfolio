@@ -18,7 +18,7 @@ export default function Footer() {
             </p>
             <div className="footer__ctas">
               <a
-                href="https://wa.me/971545821600"
+                href="https://wa.me/971504361285"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer__cta-btn footer__cta-btn--gold footer__cta-btn--icon"
